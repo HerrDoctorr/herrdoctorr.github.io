@@ -16,6 +16,534 @@
       background-color: #f5f2e0;
       color: #2D3436; 
       margin: 0;
+      padding: 0;
+    }
+
+    .banner {
+      color: #F5F2E0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #7A161F;
+      padding: 5px;
+      display: flex;
+      flex-direction: row;
+      font-size: 30px;
+      justify-content: center;
+    }
+
+    h1 {
+      color: #F5F2E0;
+      font-family: 'League Spartan', sans-serif;
+      background-color: #7A161F;
+    }
+
+    h2 {
+      color: #2D3436;
+      font-family: 'League Spartan', sans-serif;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .logo {
+      height: 2em;
+      margin-top: 35px;
+      margin-right: 15px;
+    }
+
+    .kasse {
+      max-width: 900px;
+      margin: auto;
+      text-align: left;
+    }
+
+    .produkte {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 30px;
+    }
+
+    .produkt-container {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .produkt {
+      width: 100%;
+      background-color: white;
+      border: 2px solid transparent;
+      border-radius: 12px;
+      padding: 35px;
+      font-size: 20px;
+      cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+      transition: 0.1s;
+    }
+
+    .produkt:hover {
+      background-color: #fcefdc;
+      border: 2px solid #B88B4A
+    }
+
+    .produkt:active {
+      transform:scale(0.98);
+    }
+
+    .preis {
+      display: block;
+      margin-top: 8px;
+      font-size: 16px;
+      color: #666;
+    }
+
+    .minus-button {
+      width: 85%;
+      align-self: center;
+      padding: 8px;
+      background-color: #e9ecef;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.1s;
+    }
+
+    .minus-button:hover {
+      background-color: #7A161F;
+      color: white;
+    }
+
+    .minus-button:active {
+      transform:scale(0.97);
+    }
+
+    .warenkorb {
+      background-color: white;
+      margin-top: 30px;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+
+    }
+
+   .warenkorb h2 {
+      text-align: center;
+      margin-top: 0;
+    }
+
+   .warenkorb-zeile {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+   .warenkorb-produkt {
+      font-size: 17px;
+    }
+
+   .warenkorb-preis {
+      font-weight: bold;
+    }
+
+   .leer {
+      color: #888;
+      text-align: center;
+    }
+
+    .gesamt {
+      font-size: 28px;
+      font-weight: bold;
+      font-family: 'League Spartan', sans-serif;
+      text-align: right;
+      margin-top: 20px;
+      color: #7A161F;
+   }
+
+   .aktions-buttons {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+   .loeschen {
+     width: 100%;
+     padding: 18px;
+     border: none;
+     border-radius: 10px;
+     background-color: #7A161F;
+     color: white;
+     font-size: 18px;
+     font-weight: bold;
+     font-family: 'Inter', sans-serif;
+     cursor: pointer;
+     transition: 0.1s;
+    }
+
+   .loeschen:hover {
+     background-color: #5c1017;
+    }
+
+   .loeschen:active {
+     transform: scale(0.98);
+    }
+
+   .loeschen:disabled {
+     background-color: #d6d6d6;
+     color: #999;
+     cursor: not-allowed;
+    }
+
+   .bezahlen {
+     width: 100%;
+     padding: 18px;
+     border: none;
+     border-radius: 10px;
+     background-color: #B88B4A;
+     color: white;
+     font-size: 18px;
+     font-weight: bold;
+     font-family: 'Inter', sans-serif;
+     cursor: pointer;
+     transition: 0.1s;
+    }
+
+   .bezahlen:hover {
+     background-color: #9d753c;
+    }
+
+   .bezahlen:active {
+     transform: scale(0.98);
+    }
+
+   @media (max-width: 600px) {
+    body {
+      padding: 0;
+    }
+
+    .kasse {
+      padding: 0 10px;
+    }
+
+    .produkte {
+      gap: 10px;
+    }
+
+    .produkt {
+      padding: 40px 10px;
+      font-size: 17px;
+    }
+
+    .preis {
+      font-size: 14px;
+    }
+    
+    .minus-button {
+     font-size: 16px;
+    }
+
+    .gesamt {
+     font-size: 25px;
+   }
+
+   .aktions-buttons {
+     grid-template-columns: 1fr;
+   }
+  }
+
+  </style>
+</head>
+<body>
+
+  <!--ÜBERSCHRIFT -->
+  <div class="banner">
+    <img src="Logo1zu1.png" alt="Messdiener Logo" class="logo">
+    <h1>Avanti-PoS</h1>
+  </div>
+
+  <div class="kasse">
+
+    <h2>Kassensystem</h2>
+
+    <!-- PRODUKTE -->
+     <div class="produkte">
+      <!-- GLÜHWEIN -->
+      <div class="produkt-container">
+        <button 
+          class="produkt" 
+          onclick="Hinzufuegen('Glühwein')"
+          >
+          Glühwein
+          <span 
+            class="preis">3,50 €
+          </span>
+        </button>
+
+        <button 
+          id="minus-Glühwein"
+          class="minus-button" 
+          onclick="entfernen('Glühwein')"
+          style="display: none"
+          >
+          - 0 
+        </button>   
+      </div>
+
+      <!-- GLÜHWEIN MIT SCHUSS -->
+      <div class="produkt-container">
+        <button 
+          class="produkt" 
+          onclick="Hinzufuegen('Glühwein-Schuss')"
+          >
+          Glühwein mit Schuss
+          <span 
+            class="preis">4,00 €
+          </span>
+        </button>
+
+        <button 
+          id="minus-Glühwein-Schuss"
+          class="minus-button" 
+          onclick="entfernen('Glühwein-Schuss')"
+          style="display: none"
+          >
+          - 0 
+        </button>   
+      </div>
+
+      <!-- KAKAO -->
+      <div class="produkt-container">
+        <button 
+          class="produkt" 
+          onclick="Hinzufuegen('Kakao')"
+          >
+          Kakao
+          <span 
+            class="preis">2,50 €
+          </span>
+        </button>
+
+        <button 
+          id="minus-Kakao"
+          class="minus-button" 
+          onclick="entfernen('Kakao')"
+          style="display: none"
+          >
+          - 0 
+        </button>   
+      </div>
+
+      <!-- KAKAO MIT SCHUSS -->
+      <div class="produkt-container">
+        <button 
+          class="produkt" 
+          onclick="Hinzufuegen('Kakao-Schuss')"
+          >
+          Kakao mit Schuss
+          <span 
+            class="preis">4,00 €
+          </span>
+        </button>
+
+        <button 
+          id="minus-Kakao-Schuss"
+          class="minus-button" 
+          onclick="entfernen('Kakao-Schuss')"
+          style="display: none"
+          >
+          - 0 
+        </button>   
+      </div>
+
+      <!-- KINDERPUNSCH -->
+      <div class="produkt-container">
+        <button 
+          class="produkt" 
+          onclick="Hinzufuegen('Kinderpunsch')"
+          >
+          Kinderpunsch  
+          <span 
+            class="preis">2,00 €
+          </span>
+        </button>
+
+        <button 
+          id="minus-Kinderpunsch"
+          class="minus-button" 
+          onclick="entfernen('Kinderpunsch')"
+          style="display: none"
+          >
+          - 0 
+        </button>   
+      </div>
+    </div>
+    <!-- WARENKORB -->
+      <div class="warenkorb">
+        <h2>Bestellung</h2>
+        <div id="warenkorb">
+          <p class="leer">Keine Bestellungen aufgenommen.</p>
+        </div>
+        <div class="gesamt" id="gesamt">Gesamt: 0,00 €</div>
+        <div class="aktions-buttons">
+          <button 
+            id="loeschen-button"
+            class="loeschen" 
+            onclick="loeschen()"
+            disabled
+            >
+            Bestellung löschen
+          </button>
+          <button 
+            id="bezahlen-button"
+            class="bezahlen" 
+            onclick="bezahlen()"
+            disabled
+            >
+            Bezahlen
+          </button>
+        </div>
+  </div>
+  <script>
+    const produktPreise = {
+      "Glühwein": 3.50,
+      "Glühwein-Schuss": 4.00,
+      "Kakao": 2.50,
+      "Kakao-Schuss": 4.00,
+      "Kinderpunsch": 2.00
+    };
+    let bestellungen = {};
+    const pfand = 2.00;
+
+    function Hinzufuegen(id) {
+      if (!bestellungen[id]) {
+        bestellungen[id] = 0;
+      }
+      bestellungen[id]++;
+      aktualisiereWarenkorb();
+    }
+
+    function entfernen(id) {
+      if (!bestellungen[id]) {
+        return;
+      }
+      bestellungen[id]--;
+      if (bestellungen[id] === 0) {
+        delete bestellungen[id];
+      }
+      aktualisiereWarenkorb();
+    }
+    
+    function loeschen() {
+      if (Object.keys(bestellungen).length === 0) {
+        return;
+      }
+      const bestätigt = confirm("Möchtest du die Bestellung wirklich löschen?");
+      if (!bestätigt) {
+        return;
+      }
+      bestellungen = {};
+      aktualisiereWarenkorb();
+    }
+    
+  function aktualisiereWarenkorb() {
+      const warenkorb = document.getElementById("warenkorb");
+      const gesamtAnzeige = document.getElementById("gesamt");
+      const loeschenButton = document.getElementById("loeschen-button");
+      const bezahlenButton = document.getElementById("bezahlen-button");
+      
+      const hatBestellungen = Object.keys(bestellungen).length > 0;
+      loeschenButton.disabled = !hatBestellungen;
+      bezahlenButton.disabled = !hatBestellungen;
+
+      warenkorb.innerHTML = "";
+      let getränkeGesamt = 0;
+      let anzahlGetränke = 0;
+
+      for (const id in bestellungen) {
+        const anzahl = bestellungen[id];
+        const einzelpreis = produktPreise[id];
+        const produktGesamt = einzelpreis * anzahl;
+        
+        getränkeGesamt += produktGesamt;
+        anzahlGetränke += anzahl;
+
+        const zeile = document.createElement("div");
+        zeile.className = "warenkorb-zeile";
+        zeile.innerHTML = `
+          <span class="warenkorb-produkt">${id} x ${anzahl}</span>
+          <span class="warenkorb-preis">${produktGesamt.toFixed(2).replace('.', ',')} €</span>
+        `;
+        warenkorb.appendChild(zeile);
+
+        const minusButton = document.getElementById(`minus-${id}`);
+        if (minusButton) {
+          minusButton.style.display = "block";
+          minusButton.innerText = "- " + anzahl;
+        }
+      }
+
+      for (const id in produktPreise) {
+        if (!bestellungen[id]) {
+          const minusButton = document.getElementById(`minus-${id}`);
+          if (minusButton) {
+            minusButton.style.display = "none";
+          }
+        }
+      }
+
+      if (anzahlGetränke === 0) {
+        warenkorb.innerHTML = "<p class='leer'>Keine Bestellungen aufgenommen.</p>";
+        gesamtAnzeige.innerText = "Gesamt: 0,00 €";
+        return;
+      }
+
+      const pfandGesamt = anzahlGetränke * pfand;
+      const pfandZeile = document.createElement("div");
+      pfandZeile.className = "warenkorb-zeile";
+      pfandZeile.innerHTML = `
+        <span class="warenkorb-produkt">Pfand x ${anzahlGetränke}</span>
+        <span class="warenkorb-preis">${pfandGesamt.toFixed(2).replace('.', ',')} €</span>
+      `;
+      warenkorb.appendChild(pfandZeile);
+
+      const gesamt = getränkeGesamt + pfandGesamt;
+      gesamtAnzeige.innerText = `Gesamt: ${gesamt.toFixed(2).replace('.', ',')} €`;
+    }
+
+    function bezahlen() {
+      if (Object.keys(bestellungen).length === 0) {
+        alert("Ihre Bestellung ist leer.");
+        return;
+      }
+      alert("Bestellung bezahlt!");
+      bestellungen = {};
+      aktualisiereWarenkorb();
+    }
+      
+  </script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Avanti Ministrare</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f5f2e0;
+      color: #2D3436; 
+      margin: 0;
       padding: 20;
     }
 
