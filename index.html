@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -391,6 +390,19 @@
 </head>
 <body>
 
+<div id="pin-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 9999; font-family: sans-serif;">
+  <div style="background: #ffffff; padding: 30px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
+    <h2 style="margin-top: 0; color: #333;">Login</h2>
+    <p style="color: #666; font-size: 14px;">Bitte PIN eingeben, um fortzufahren:</p>
+    
+    <input type="password" id="pin-input" placeholder="****" maxlength="8" style="width: 100%; padding: 12px; font-size: 24px; text-align: center; letter-spacing: 6px; margin: 15px 0; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; outline: none;">
+    
+    <div id="pin-error" style="color: #ef4444; font-size: 13px; display: none; margin-bottom: 10px;">Falscher PIN <br> Bitte erneut versuchen</div>
+    
+    <button onclick="checkPin()" style="width: 100%; padding: 12px; background: #7A161F; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">Anmelden</button>
+  </div>
+</div>
+
 <!-- NEUER BANNER -->
   <div class="banner">
     <div class="banner-left">
@@ -614,24 +626,36 @@
 
   <script>
 
-    (function() {
-        // Hier deinen gewünschten PIN festlegen
-        const RICHTIGER_PIN = "2026"; 
+const RICHTIGER_PIN = "2026"; // <-- Hier deinen PIN festlegen
 
-        // Prüfen, ob der PIN bereits in dieser Sitzung eingegeben wurde
-        if (sessionStorage.getItem("kasse_angemeldet") !== "true") {
-          let eingabe = prompt("Bitte PIN für die Kasse eingeben:");
-          
-          if (eingabe === RICHTIGER_PIN) {
-            sessionStorage.setItem("kasse_angemeldet", "true");
-          } else {
-            alert("Falscher PIN! Zugriff verweigert.");
-            // Seite weiß/leer machen oder umleiten
-            document.documentElement.innerHTML = "<h1 style='text-align:center; padding-top:50px;'>Zugriff verweigert</h1>";
-            window.stop();
-          }
-        }
-      })();
+  // Beim Laden prüfen, ob schon eingeloggt
+  document.addEventListener("DOMContentLoaded", function() {
+    if (sessionStorage.getItem("kasse_angemeldet") === "true") {
+      document.getElementById("pin-overlay").style.display = "none";
+    } else {
+      document.getElementById("pin-input").focus();
+    }
+  });
+
+  // Funktion zum Prüfen des PINs
+  function checkPin() {
+    const eingabe = document.getElementById("pin-input").value;
+    if (eingabe === RICHTIGER_PIN) {
+      sessionStorage.setItem("kasse_angemeldet", "true");
+      document.getElementById("pin-overlay").style.display = "none";
+    } else {
+      document.getElementById("pin-error").style.display = "block";
+      document.getElementById("pin-input").value = "";
+      document.getElementById("pin-input").focus();
+    }
+  }
+
+  // Erlaubt das Bestätigen mit der Enter-Taste
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter" && sessionStorage.getItem("kasse_angemeldet") !== "true") {
+      checkPin();
+    }
+  });
 
     const produktPreise = {
       "Glühwein": 3.50,
