@@ -248,6 +248,23 @@
     display: none;
    }
 
+   .footer {
+     padding: 24px 16px 30px;
+     color: #666;
+     text-align: center;
+     font-size: 13px;
+    }
+
+   .footer-titel {
+     display: block;
+     margin-bottom: 5px;
+     color: #7A161F;
+     font-family: 'League Spartan', sans-serif;
+     font-size: 16px;
+     font-weight: 700;
+     letter-spacing: 0.4px;
+    }
+
    .loeschen {
      width: 100%;
      padding: 18px;
@@ -376,7 +393,7 @@
 <!-- NEUER BANNER -->
   <div class="banner">
     <div class="banner-left">
-      <img src="assets/Logo1zu1.png" alt="Messdiener Logo" class="logo">
+      <img src="Logo1zu1.png" alt="Messdiener Logo" class="logo">
       <div class="banner-text">
         <span class="banner-title">AVANTI MINISTRARE</span>
         <span class="banner-subtitle">Lembeck Leuchtet • 27.11.2026</span>
@@ -400,7 +417,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Glühwein')"
           >
-          <img class="produkt-bild" src="assets/gluehwein.png" alt="">
+          <img class="produkt-bild" src="gluehwein.png" alt="">
           <span class="produkt-inhalt">
             Glühwein
             <span class="preis">3,50 €</span>
@@ -423,9 +440,9 @@
           class="produkt" 
           onclick="Hinzufuegen('Glühwein-Schuss')"
           >
-          <img class="produkt-bild" src="assets/gluehwein-schuss.png" alt="">
+          <img class="produkt-bild" src="gluehwein-schuss.png" alt="">
           <span class="produkt-inhalt">
-            Glühwein<br>mit Schuss
+            Glühwein mit Schuss
             <span class="preis">4,00 €
             </span>
           </span>
@@ -447,7 +464,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Kakao')"
           >
-          <img class="produkt-bild" src="assets/kakao.png" alt="">
+          <img class="produkt-bild" src="kakao.png" alt="">
           <span class="produkt-inhalt">
             Kakao
             <span class="preis">2,50 €
@@ -471,9 +488,9 @@
           class="produkt" 
           onclick="Hinzufuegen('Kakao-Schuss')"
           >
-          <img class="produkt-bild" src="assets/kakao-schuss.png" alt="">
+          <img class="produkt-bild" src="kakao-schuss.png" alt="">
           <span class="produkt-inhalt">
-            Kakao<br>mit Schuss
+            Kakao mit Schuss
             <span class="preis">4,00 €
             </span>
           </span>
@@ -495,7 +512,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Kinderpunsch')"
           >
-          <img class="produkt-bild" src="assets/kinderpunsch.png" alt="">
+          <img class="produkt-bild" src="kinderpunsch.png" alt="">
           <span class="produkt-inhalt">
             Kinderpunsch
             <span class="preis">2,00 €
@@ -561,6 +578,16 @@
       </button>
     </div>
   </div>
+<footer class="footer" style="margin-top: 50px;">
+  <div class="footer-brand">
+    <span class="footer-titel">AVANTI MINISTRARE &copy;</span>
+  </div>
+  <div class="footer-credits">
+    Entwickelt von Marcel H. <br>
+    Messdiener Lembeck - 2026
+  </div>
+</footer>
+
   <script>
     const produktPreise = {
       "Glühwein": 3.50,
