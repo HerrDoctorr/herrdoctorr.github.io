@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -612,6 +613,26 @@
 </footer>
 
   <script>
+
+    (function() {
+        // Hier deinen gewünschten PIN festlegen
+        const RICHTIGER_PIN = "2026"; 
+
+        // Prüfen, ob der PIN bereits in dieser Sitzung eingegeben wurde
+        if (sessionStorage.getItem("kasse_angemeldet") !== "true") {
+          let eingabe = prompt("Bitte PIN für die Kasse eingeben:");
+          
+          if (eingabe === RICHTIGER_PIN) {
+            sessionStorage.setItem("kasse_angemeldet", "true");
+          } else {
+            alert("Falscher PIN! Zugriff verweigert.");
+            // Seite weiß/leer machen oder umleiten
+            document.documentElement.innerHTML = "<h1 style='text-align:center; padding-top:50px;'>Zugriff verweigert</h1>";
+            window.stop();
+          }
+        }
+      })();
+
     const produktPreise = {
       "Glühwein": 3.50,
       "Glühwein-Schuss": 4.00,
