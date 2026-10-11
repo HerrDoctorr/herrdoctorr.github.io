@@ -21,6 +21,8 @@
 
     .banner {
       background-color: #7A161F;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='72' viewBox='0 0 150 72'%3E%3Cg fill='%23D6AE69' fill-opacity='.2'%3E%3Cpath d='M17 8l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M81 18l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M132 7l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M43 48l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M112 45l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3C/g%3E%3C/svg%3E");
+      background-repeat: repeat;
       padding: 12px 15px;
       display: flex;
       align-items: center;
@@ -82,16 +84,17 @@
       height: 45px;
       border-radius: 50%;
       object-fit: cover;
-      background-color: white;
+      background-color: #F5F2E0;
       border: 2px solid #F5F2E0;
       margin-top: 0;
       margin-right: 0;
     }
 
-        h2 {
+    h2 {
       color: #2D3436;
       font-family: 'League Spartan', sans-serif;
-      margin-top: 15px;
+      margin-top: 28px;
+      margin-bottom: 8px;
       text-align: center;
     }
 
@@ -104,8 +107,8 @@
     .produkte {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 15px;
-      margin-top: 30px;
+      gap: 10px;
+      margin-top: 10px;
     }
 
     .produkt-container {
@@ -119,6 +122,9 @@
       height: 150px;
       box-sizing: border-box;
       background-color: white;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100% 100%;
       border: 2px solid transparent;
       border-radius: 12px;
       padding: 35px;
@@ -126,6 +132,26 @@
       cursor: pointer;
       box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
       transition: 0.1s;
+    }
+
+    .produkt-container:nth-child(1) .produkt {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 150'%3E%3Cg fill='%23B88B4A' fill-opacity='.11'%3E%3Cpath d='M42 10l3 9 10 .4-7.7 6 2.8 9.5-8.1-5.3-8.1 5.3 2.8-9.5-7.7-6 10-.4zM112 89l2 6 6.5.3-5 3.8 1.8 6.2-5.3-3.4-5.3 3.4 1.8-6.2-5-3.8 6.5-.3zM262 12l2.4 7.2 8 .3-6.2 4.8 2.3 7.7-6.5-4.3-6.5 4.3 2.3-7.7-6.2-4.8 8-.3zM271 97l-12 18h7l-10 13h10v9h12v-9h10l-10-13h7z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .produkt-container:nth-child(2) .produkt {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 150'%3E%3Cg fill='%237A161F' fill-opacity='.1'%3E%3Cpath d='M47 12L34 32h8L27 48h12v13h16V48h12L54 32h8zM153 81l-11 17h7l-9 13h9v11h11v-11h9l-9-13h7zM264 12l-14 21h9l-12 16h11v13h13V49h11l-12-16h9z'/%3E%3C/g%3E%3Cpath fill='%23B88B4A' fill-opacity='.12' d='M95 91l2.5 8L106 102l-8.5 2.5L95 113l-2.5-8.5L84 102l8.5-3z'/%3E%3C/svg%3E");
+    }
+
+    .produkt-container:nth-child(3) .produkt {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 150'%3E%3Cg fill='%23B88B4A' fill-opacity='.11'%3E%3Cpath d='M46 13l2.5 8 8.5 2.5-8.5 2.5-2.5 8.5-2.5-8.5-8.5-2.5 8.5-2.5zM247 91l2 6.5 6.5 2-6.5 2-2 6.5-2-6.5-6.5-2 6.5-2z'/%3E%3Cpath d='M145 35l-13 20h8l-11 15h11v12h11V70h11l-11-15h8zM278 33l-10 15h6l-8 11h8v9h10v-9h8l-8-11h6z'/%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .produkt-container:nth-child(4) .produkt {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 150'%3E%3Cg fill='%237A161F' fill-opacity='.09'%3E%3Cpath d='M44 9l-12 18h8L30 42h10v11h10V42h10L50 27h8zM180 87l-11 16h7l-9 12h9v10h11v-10h9l-9-12h7zM276 14l-13 19h8l-10 14h10v11h11V47h10l-10-14h8z'/%3E%3C/g%3E%3Cpath fill='%23B88B4A' fill-opacity='.12' d='M111 28l2.5 8 8.5 2.5-8.5 2.5-2.5 8.5-2.5-8.5-8.5-2.5 8.5-2.5z'/%3E%3C/svg%3E");
+    }
+
+    .produkt-container:nth-child(5) .produkt {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 150'%3E%3Cg fill='%23B88B4A' fill-opacity='.11'%3E%3Cpath d='M44 13l2.5 8 8.5 2.5-8.5 2.5-2.5 8.5-2.5-8.5-8.5-2.5 8.5-2.5zM239 19l2 6.5 6.5 2-6.5 2-2 6.5-2-6.5-6.5-2 6.5-2zM105 96l2 6.5 6.5 2-6.5 2-2 6.5-2-6.5-6.5-2 6.5-2z'/%3E%3Cpath d='M183 29l-12 18h8l-10 14h10v11h12V61h10l-10-14h8z'/%3E%3C/g%3E%3C/svg%3E");
     }
 
     .produkt:hover {
