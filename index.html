@@ -79,7 +79,7 @@
     .live-punkt {
       width: 8px;
       height: 8px;
-      background-color: #F5F2E0;
+      background-color: #e0f5e5;
       border-radius: 50%;
     }
 
@@ -145,7 +145,7 @@
       width: 72px;
       height: 72px;
       object-fit: contain;
-      opacity: 0.75;
+      opacity: 1;
       pointer-events: none;
     }
 
@@ -234,7 +234,7 @@
       font-family: 'League Spartan', sans-serif;
       text-align: right;
       margin-top: 20px;
-      color: #B88B4A;
+      color: #2D3436;
    }
 
    .aktions-buttons {
@@ -270,7 +270,7 @@
      padding: 18px;
      border: none;
      border-radius: 10px;
-     background-color: #2D3436;
+     background-color: #ef4444;
      color: white;
      font-size: 18px;
      font-weight: bold;
@@ -280,7 +280,7 @@
     }
 
    .loeschen:hover {
-     background-color: #1e2224;
+     background-color: #dc2828;
     }
 
    .loeschen:active {
@@ -529,6 +529,29 @@
           - 0 
         </button>   
       </div>
+
+      <!-- PFANDRÜCKGABE -->
+      <div class="produkt-container">
+        <button
+          class="produkt"
+          onclick="Hinzufuegen('Pfandrückgabe')"
+        >
+          <img class="produkt-bild" src="pfand.png" alt="">
+          <span class="produkt-inhalt">
+            Pfandrückgabe
+            <span class="preis">-2,00 €</span>
+          </span>
+        </button>
+
+        <button
+          id="minus-Pfandrückgabe"
+          class="minus-button"
+          onclick="entfernen('Pfandrückgabe')"
+          style="display: none"
+        >
+          - 0 
+        </button>
+      </div>
     </div>
     <!-- WARENKORB -->
       <div class="warenkorb">
@@ -594,7 +617,8 @@
       "Glühwein-Schuss": 4.00,
       "Kakao": 2.50,
       "Kakao-Schuss": 4.00,
-      "Kinderpunsch": 2.00
+      "Kinderpunsch": 2.00,
+      "Pfandrückgabe": -2.00
     };
     let bestellungen = {};
     const pfand = 2.00;
@@ -650,7 +674,9 @@
         const produktGesamt = einzelpreis * anzahl;
         
         getränkeGesamt += produktGesamt;
-        anzahlGetränke += anzahl;
+        if (id !== "Pfandrückgabe") {
+          anzahlGetränke += anzahl;
+        }
 
         const zeile = document.createElement("div");
         zeile.className = "warenkorb-zeile";
@@ -676,20 +702,22 @@
         }
       }
 
-      if (anzahlGetränke === 0) {
+      if (!hatBestellungen) {
         warenkorb.innerHTML = "<p class='leer'>Keine Bestellungen aufgenommen.</p>";
         gesamtAnzeigen.forEach((anzeige) => anzeige.innerText = "Gesamt: 0,00 €");
         return;
       }
 
       const pfandGesamt = anzahlGetränke * pfand;
-      const pfandZeile = document.createElement("div");
-      pfandZeile.className = "warenkorb-zeile";
-      pfandZeile.innerHTML = `
-        <span class="warenkorb-produkt">Pfand x ${anzahlGetränke}</span>
-        <span class="warenkorb-preis">${pfandGesamt.toFixed(2).replace('.', ',')} €</span>
-      `;
-      warenkorb.appendChild(pfandZeile);
+      if (anzahlGetränke > 0) {
+        const pfandZeile = document.createElement("div");
+        pfandZeile.className = "warenkorb-zeile";
+        pfandZeile.innerHTML = `
+          <span class="warenkorb-produkt">Pfand x ${anzahlGetränke}</span>
+          <span class="warenkorb-preis">${pfandGesamt.toFixed(2).replace('.', ',')} €</span>
+        `;
+        warenkorb.appendChild(pfandZeile);
+      }
 
       const gesamt = getränkeGesamt + pfandGesamt;
       const gesamtText = `Gesamt: ${gesamt.toFixed(2).replace('.', ',')} €`;
