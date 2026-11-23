@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Avanti Ministrare</title>
+        <title>Avanti Ministrare • Kasse</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
             rel="stylesheet"
         />
         <link rel="preload" as="image" href="gluehwein.png" />
@@ -19,305 +19,406 @@
         <link rel="preload" as="image" href="pfand.png" />
 
         <style>
+            :root {
+                --surface-app: #f4f6f8;
+                --surface-card: #ffffff;
+                --surface-muted: #eef2f6;
+                --ink-primary: #0f172a;
+                --ink-secondary: #475569;
+                --ink-muted: #64748b;
+                --line-subtle: #e2e8f0;
+                --line-strong: #cbd5e1;
+                --accent-brand: #1e293b;
+                --accent-action: #15803d;
+                --accent-action-hover: #166534;
+                --accent-action-soft: #f0fdf4;
+                --accent-danger: #dc2626;
+                --accent-danger-soft: #fef2f2;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
             body {
-                font-family: "Inter", sans-serif;
-                background-color: #f5f2e0;
-                color: #2d3436;
                 margin: 0;
-                padding: 0;
+                padding: 0 0 144px 0;
+                font-family: "Inter", sans-serif;
+                background-color: var(--surface-app);
+                color: var(--ink-primary);
+                font-variant-numeric: tabular-nums;
+                -webkit-tap-highlight-color: transparent;
             }
 
             button {
                 font-family: inherit;
             }
 
-            .banner {
-                background-color: #7a161f;
-                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='72' viewBox='0 0 150 72'%3E%3Cg fill='%23D6AE69' fill-opacity='.2'%3E%3Cpath d='M17 8l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M81 18l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M132 7l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M43 48l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M112 45l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3C/g%3E%3C/svg%3E");
-                background-repeat: repeat;
-                padding: 12px 15px;
+            /* TOP-BAR */
+            .topbar {
+                background-color: var(--accent-brand);
+                color: #ffffff;
+                padding: 12px 16px;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             }
 
-            .banner-left {
+            .topbar-brand {
                 display: flex;
                 align-items: center;
-                gap: 12px;
-            }
-
-            .banner-text {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .banner-title {
-                color: #f5f2e0;
-                font-family: "League Spartan", sans-serif;
-                font-size: 18px;
-                font-weight: 700;
-                letter-spacing: 0.5px;
-                line-height: 1.1;
-            }
-
-            .banner-subtitle {
-                color: #b88b4a;
-                font-family: "Inter", sans-serif;
-                font-size: 13px;
-                font-weight: 500;
-                margin-top: 2px;
+                gap: 11px;
             }
 
             .logo {
-                width: 45px;
-                height: 45px;
-                border-radius: 50%;
+                width: 38px;
+                height: 38px;
+                border-radius: 8px;
                 object-fit: cover;
-                background-color: #f5f2e0;
-                border: 2px solid #f5f2e0;
-                margin-top: 0;
-                margin-right: 0;
+                background-color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.25);
             }
 
-            h2 {
-                color: #2d3436;
-                font-family: "League Spartan", sans-serif;
-                margin-top: 28px;
-                margin-bottom: 8px;
-                text-align: center;
+            .topbar-titles {
+                display: flex;
+                flex-direction: column;
             }
 
-            .kasse {
-                max-width: 900px;
-                margin: auto;
-                text-align: left;
+            .topbar-title {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                letter-spacing: -0.01em;
+                line-height: 1.15;
             }
 
+            .topbar-meta {
+                font-size: 12px;
+                color: #cbd5e1;
+                margin-top: 2px;
+            }
+
+            .topbar-pill {
+                font-size: 11px;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: #e2e8f0;
+                background-color: rgba(255, 255, 255, 0.1);
+                padding: 5px 9px;
+                border-radius: 6px;
+            }
+
+            /* LAYOUT */
+            .pos-shell {
+                max-width: 1260px;
+                margin: 0 auto;
+                padding: 14px 12px 0;
+            }
+
+            .section-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+
+            .section-title {
+                margin: 0;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--ink-secondary);
+            }
+
+            .section-sub {
+                font-size: 12px;
+                color: var(--ink-muted);
+            }
+
+            /* PRODUKT-LISTE (SMARTPHONE: KOMPAKTE KARTEN) */
             .produkte {
                 display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-                margin-top: 10px;
+                grid-template-columns: 1fr;
+                gap: 8px;
             }
 
             .produkt-container {
-                display: flex;
-                flex-direction: column;
+                display: grid;
+                grid-template-columns: 1fr auto;
                 gap: 6px;
+                align-items: stretch;
             }
 
             .produkt {
                 width: 100%;
-                height: 150px;
-                position: relative;
+                background-color: var(--surface-card);
+                border: 1px solid var(--line-subtle);
+                border-radius: 10px;
+                padding: 10px 14px;
                 display: flex;
-                flex-direction: column;
                 align-items: center;
-                justify-content: center;
-                box-sizing: border-box;
-                background-color: white;
-                border: 2px solid transparent;
-                border-radius: 12px;
-                padding: 35px;
-                font-size: 20px;
-                font-family: "Inter", sans-serif;
+                justify-content: space-between;
+                gap: 12px;
+                text-align: left;
                 cursor: pointer;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
-                transition: 0.1s;
+                transition: border-color 0.12s ease, background-color 0.12s ease, transform 0.06s ease;
+            }
+
+            .produkt:hover {
+                border-color: var(--line-strong);
+                background-color: #fafbfd;
+            }
+
+            .produkt:active {
+                transform: scale(0.99);
+                background-color: var(--surface-muted);
+            }
+
+            .produkt-links {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                min-width: 0;
             }
 
             .produkt-bild {
-                width: 72px;
-                height: 72px;
+                width: 44px;
+                height: 44px;
                 object-fit: contain;
-                opacity: 1;
+                background-color: var(--surface-app);
+                border-radius: 8px;
+                padding: 4px;
+                flex-shrink: 0;
                 pointer-events: none;
             }
 
             .produkt-inhalt {
-                position: relative;
-                z-index: 1;
-                display: block;
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+                min-width: 0;
             }
 
-            .produkt:hover {
-                background-color: #fcefdc;
-                border: 2px solid #b88b4a;
+            .produkt-name {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                color: var(--ink-primary);
             }
 
-            .produkt:active {
-                transform: scale(0.98);
+            .produkt-pfandhinweis {
+                font-size: 11px;
+                color: var(--ink-muted);
             }
 
             .preis {
-                display: block;
-                margin-top: 8px;
+                font-family: "Plus Jakarta Sans", sans-serif;
                 font-size: 16px;
-                color: #666;
+                font-weight: 700;
+                color: var(--ink-primary);
+                background-color: var(--surface-muted);
+                padding: 6px 10px;
+                border-radius: 7px;
+                white-space: nowrap;
             }
 
             .minus-button {
-                width: 85%;
-                align-self: center;
-                padding: 8px;
-                background-color: #e9ecef;
-                border: none;
-                border-radius: 8px;
-                font-size: 18px;
-                font-weight: bold;
+                min-width: 64px;
+                padding: 0 12px;
+                background-color: var(--surface-card);
+                border: 1px solid #fecaca;
+                border-radius: 10px;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
+                font-weight: 700;
+                color: var(--accent-danger);
                 cursor: pointer;
-                transition: 0.1s;
+                transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
             }
 
             .minus-button:hover {
-                background-color: #ef4444;
-                color: white;
+                background-color: var(--accent-danger-soft);
+                border-color: var(--accent-danger);
             }
 
             .minus-button:active {
                 transform: scale(0.97);
             }
 
+            /* BON / WARENKORB */
             .warenkorb {
-                background-color: white;
-                margin-top: 30px;
-                padding: 25px;
-                border-radius: 12px;
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+                margin-top: 18px;
+                background-color: var(--surface-card);
+                border: 1px solid var(--line-subtle);
+                border-radius: 10px;
+                padding: 14px 16px;
             }
 
-            .warenkorb h2 {
-                text-align: center;
-                margin-top: 0;
+            .warenkorb-kopf {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 10px;
+                border-bottom: 1px solid var(--line-subtle);
+            }
+
+            .warenkorb-kopf h2 {
+                margin: 0;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--ink-secondary);
             }
 
             .warenkorb-zeile {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 12px 0;
-                border-bottom: 1px solid #ddd;
+                padding: 9px 0;
+                border-bottom: 1px solid var(--surface-muted);
+                font-size: 15px;
+            }
+
+            .warenkorb-zeile:last-child {
+                border-bottom: none;
             }
 
             .warenkorb-produkt {
-                font-size: 17px;
+                color: var(--ink-primary);
+                font-weight: 500;
             }
 
             .warenkorb-preis {
-                font-weight: bold;
+                font-weight: 700;
+                color: var(--ink-primary);
             }
 
             .leer {
-                color: #888;
+                margin: 0;
+                padding: 20px 8px;
                 text-align: center;
+                color: var(--ink-muted);
+                font-size: 14px;
             }
 
             .gesamt {
-                font-size: 28px;
-                font-weight: bold;
-                font-family: "League Spartan", sans-serif;
-                text-align: right;
-                margin-top: 20px;
-                color: #2d3436;
+                margin-top: 12px;
+                padding-top: 12px;
+                border-top: 1px solid var(--line-strong);
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 22px;
+                font-weight: 800;
+                color: var(--ink-primary);
             }
 
             .aktions-buttons {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-                margin-top: 20px;
+                grid-template-columns: 1fr 1.6fr;
+                gap: 8px;
+                margin-top: 14px;
             }
 
-            .mobile-warenkorb {
-                display: none;
-            }
-
-            .footer {
-                padding: 24px 16px 30px;
-                color: #666;
-                text-align: center;
-                font-size: 13px;
-            }
-
-            .footer-titel {
-                display: block;
-                margin-bottom: 5px;
-                color: #7a161f;
-                font-family: "League Spartan", sans-serif;
-                font-size: 16px;
+            .loeschen,
+            .bezahlen {
+                width: 100%;
+                padding: 13px 12px;
+                border-radius: 8px;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
-                letter-spacing: 0.4px;
+                cursor: pointer;
+                transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
             }
 
             .loeschen {
-                width: 100%;
-                padding: 18px;
-                border: none;
-                border-radius: 10px;
-                background-color: #ef4444;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                font-family: "League Spartan", sans-serif;
-                cursor: pointer;
-                transition: 0.1s;
+                background-color: var(--surface-card);
+                border: 1px solid var(--line-strong);
+                color: var(--ink-secondary);
             }
 
-            .loeschen:hover {
-                background-color: #dc2828;
-            }
-
-            .loeschen:active {
-                transform: scale(0.98);
-            }
-
-            .loeschen:disabled {
-                background-color: #d6d6d6;
-                color: #999;
-                cursor: not-allowed;
+            .loeschen:hover:not(:disabled) {
+                background-color: var(--accent-danger-soft);
+                border-color: #fca5a5;
+                color: var(--accent-danger);
             }
 
             .bezahlen {
-                width: 100%;
-                padding: 18px;
-                border: none;
-                border-radius: 10px;
-                background-color: #15803d;
-                color: white;
-                font-size: 18px;
-                font-weight: bold;
-                font-family: "League Spartan", sans-serif;
-                cursor: pointer;
-                transition: 0.1s;
+                background-color: var(--accent-action);
+                border: 1px solid var(--accent-action);
+                color: #ffffff;
             }
 
-            .bezahlen:hover {
-                background-color: #166534;
+            .bezahlen:hover:not(:disabled) {
+                background-color: var(--accent-action-hover);
             }
 
-            .bezahlen:active {
-                transform: scale(0.98);
+            .loeschen:active:not(:disabled),
+            .bezahlen:active:not(:disabled) {
+                transform: scale(0.985);
             }
 
+            .loeschen:disabled,
             .bezahlen:disabled {
-                background-color: #d6d6d6;
-                color: #999;
+                background-color: var(--surface-muted);
+                border-color: var(--line-subtle);
+                color: #94a3b8;
                 cursor: not-allowed;
             }
 
-            /* RÜCKGELD OVERLAY */
+            /* MOBILE BOTTOM BAR */
+            .mobile-warenkorb {
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 25;
+                background-color: var(--surface-card);
+                border-top: 1px solid var(--line-strong);
+                padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+                display: grid;
+                gap: 8px;
+            }
+
+            .mobile-gesamt {
+                margin: 0;
+                padding: 0;
+                border: none;
+                font-size: 20px;
+            }
+
+            .mobile-aktions-buttons {
+                display: grid;
+                grid-template-columns: 1fr 1.6fr;
+                gap: 8px;
+            }
+
+            /* FOOTER */
+            .footer {
+                padding: 22px 16px 14px;
+                text-align: center;
+                font-size: 12px;
+                color: var(--ink-muted);
+            }
+
+            /* OVERLAY / MODAL */
             .modal-backdrop {
                 position: fixed;
                 inset: 0;
                 z-index: 100;
-                background-color: rgba(45, 52, 54, 0.72);
+                background-color: rgba(15, 23, 42, 0.58);
                 display: none;
                 align-items: center;
                 justify-content: center;
                 padding: 14px;
-                box-sizing: border-box;
             }
 
             .modal-backdrop.aktiv {
@@ -326,98 +427,83 @@
 
             .modal-box {
                 width: 100%;
-                max-width: 440px;
-                background-color: #ffffff;
-                border-radius: 16px;
-                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+                max-width: 430px;
+                background-color: var(--surface-card);
+                border: 1px solid var(--line-subtle);
+                border-radius: 12px;
                 overflow: hidden;
-                animation: modalEinblenden 0.14s ease-out;
-            }
-
-            @keyframes modalEinblenden {
-                from {
-                    opacity: 0;
-                    transform: translateY(10px) scale(0.98);
-                }
-                to {
-                    opacity: 1;
-                    transform: translateY(0) scale(1);
-                }
             }
 
             .modal-header {
-                background-color: #7a161f;
-                color: #f5f2e0;
-                padding: 16px 20px;
+                background-color: var(--accent-brand);
+                color: #ffffff;
+                padding: 13px 16px;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
+                justify-content: space-between;
             }
 
             .modal-header h3 {
                 margin: 0;
-                font-family: "League Spartan", sans-serif;
-                font-size: 22px;
-                letter-spacing: 0.3px;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 17px;
+                font-weight: 700;
             }
 
             .modal-close {
-                background: rgba(255, 255, 255, 0.15);
-                border: none;
-                color: #f5f2e0;
-                width: 34px;
-                height: 34px;
-                border-radius: 8px;
-                font-size: 20px;
-                font-weight: bold;
+                width: 30px;
+                height: 30px;
+                border-radius: 6px;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                background-color: rgba(255, 255, 255, 0.08);
+                color: #ffffff;
+                font-size: 18px;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
-            .modal-close:hover {
-                background: rgba(255, 255, 255, 0.28);
-            }
-
             .modal-body {
-                padding: 20px;
+                padding: 16px;
             }
 
             .betrag-karte {
-                background-color: #f5f2e0;
-                border: 2px solid #e6dfc3;
-                border-radius: 12px;
-                padding: 14px 16px;
+                background-color: var(--surface-app);
+                border: 1px solid var(--line-subtle);
+                border-radius: 8px;
+                padding: 11px 14px;
                 display: flex;
-                justify-content: space-between;
                 align-items: center;
-                margin-bottom: 16px;
+                justify-content: space-between;
+                margin-bottom: 14px;
             }
 
             .betrag-label {
-                font-size: 15px;
+                font-size: 12px;
                 font-weight: 600;
-                color: #555;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--ink-secondary);
             }
 
             .betrag-wert {
-                font-family: "League Spartan", sans-serif;
-                font-size: 30px;
-                font-weight: 700;
-                color: #2d3436;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 26px;
+                font-weight: 800;
+                color: var(--ink-primary);
             }
 
             .eingabe-gruppe {
-                margin-bottom: 14px;
+                margin-bottom: 10px;
             }
 
             .eingabe-label {
                 display: block;
-                font-size: 14px;
+                font-size: 12px;
                 font-weight: 600;
-                margin-bottom: 6px;
-                color: #2d3436;
+                color: var(--ink-secondary);
+                margin-bottom: 5px;
             }
 
             .eingabe-zeile {
@@ -432,258 +518,198 @@
 
             .gegeben-input {
                 width: 100%;
-                box-sizing: border-box;
-                padding: 14px 36px 14px 14px;
-                font-size: 24px;
+                padding: 11px 32px 11px 12px;
+                border: 1px solid var(--line-strong);
+                border-radius: 8px;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 21px;
                 font-weight: 700;
-                font-family: "League Spartan", sans-serif;
-                border: 2px solid #ccc;
-                border-radius: 10px;
-                color: #2d3436;
                 text-align: right;
+                color: var(--ink-primary);
             }
 
             .gegeben-input:focus {
                 outline: none;
-                border-color: #b88b4a;
-                background-color: #fffdf7;
+                border-color: var(--accent-brand);
             }
 
             .euro-suffix {
                 position: absolute;
-                right: 14px;
+                right: 12px;
                 top: 50%;
                 transform: translateY(-50%);
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 700;
-                color: #666;
+                color: var(--ink-muted);
                 pointer-events: none;
             }
 
             .clear-input-btn {
-                padding: 0 16px;
-                background-color: #e9ecef;
-                border: none;
-                border-radius: 10px;
-                font-family: "League Spartan", sans-serif;
-                font-size: 18px;
+                padding: 0 14px;
+                border: 1px solid var(--line-strong);
+                border-radius: 8px;
+                background-color: var(--surface-muted);
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
-                color: #2d3436;
+                color: var(--ink-primary);
                 cursor: pointer;
-            }
-
-            .clear-input-btn:hover {
-                background-color: #dee2e6;
             }
 
             .schnell-betraege {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
-                margin-bottom: 18px;
+                gap: 6px;
+                margin-bottom: 14px;
             }
 
             .schnell-btn {
-                padding: 13px 8px;
-                background-color: #f8f9fa;
-                border: 2px solid #dee2e6;
-                border-radius: 10px;
-                font-family: "League Spartan", sans-serif;
-                font-size: 17px;
+                padding: 10px 8px;
+                border: 1px solid var(--line-subtle);
+                border-radius: 8px;
+                background-color: var(--surface-card);
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
-                color: #2d3436;
+                color: var(--ink-primary);
                 cursor: pointer;
-                transition: 0.1s;
             }
 
             .schnell-btn:hover {
-                background-color: #fcefdc;
-                border-color: #b88b4a;
-            }
-
-            .schnell-btn:active {
-                transform: scale(0.97);
+                background-color: var(--surface-app);
+                border-color: var(--line-strong);
             }
 
             .schnell-btn.passend {
                 grid-column: span 2;
-                background-color: #fcefdc;
-                border-color: #b88b4a;
-                color: #7a161f;
+                background-color: var(--surface-muted);
+                border-color: var(--line-strong);
+                color: var(--ink-primary);
             }
 
             .rueckgeld-box {
-                border-radius: 12px;
-                padding: 16px;
+                border-radius: 8px;
+                padding: 12px;
                 text-align: center;
-                margin-bottom: 18px;
-                background-color: #f1f3f5;
-                border: 2px solid #dee2e6;
-                transition: 0.15s;
+                margin-bottom: 14px;
+                background-color: var(--surface-app);
+                border: 1px solid var(--line-subtle);
             }
 
             .rueckgeld-box.bereit {
-                background-color: #dcfce7;
-                border-color: #15803d;
+                background-color: var(--accent-action-soft);
+                border-color: #86efac;
             }
 
             .rueckgeld-box.zu-wenig {
-                background-color: #fee2e2;
-                border-color: #ef4444;
+                background-color: var(--accent-danger-soft);
+                border-color: #fca5a5;
             }
 
             .rueckgeld-titel {
                 display: block;
-                font-size: 14px;
-                font-weight: 600;
-                color: #555;
-                margin-bottom: 4px;
+                font-size: 11px;
+                font-weight: 700;
+                text-transform: uppercase;
+                letter-spacing: 0.06em;
+                color: var(--ink-secondary);
+                margin-bottom: 3px;
             }
 
             .rueckgeld-box.bereit .rueckgeld-titel {
-                color: #166534;
+                color: var(--accent-action);
             }
 
             .rueckgeld-box.zu-wenig .rueckgeld-titel {
-                color: #b91c1c;
+                color: var(--accent-danger);
             }
 
             .rueckgeld-summe {
-                font-family: "League Spartan", sans-serif;
-                font-size: 36px;
-                font-weight: 700;
-                color: #2d3436;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 30px;
+                font-weight: 800;
+                color: var(--ink-primary);
             }
 
             .rueckgeld-box.bereit .rueckgeld-summe {
-                color: #15803d;
+                color: var(--accent-action);
             }
 
             .rueckgeld-box.zu-wenig .rueckgeld-summe {
-                color: #dc2626;
+                color: var(--accent-danger);
             }
 
             .modal-aktionen {
                 display: grid;
                 grid-template-columns: 1fr 1.6fr;
-                gap: 10px;
+                gap: 8px;
             }
 
             .modal-abbrechen {
-                padding: 16px 12px;
-                border: none;
-                border-radius: 10px;
-                background-color: #e9ecef;
-                color: #2d3436;
-                font-family: "League Spartan", sans-serif;
-                font-size: 17px;
+                padding: 13px 10px;
+                border: 1px solid var(--line-strong);
+                border-radius: 8px;
+                background-color: var(--surface-card);
+                color: var(--ink-primary);
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
                 cursor: pointer;
-            }
-
-            .modal-abbrechen:hover {
-                background-color: #dee2e6;
             }
 
             .modal-abschliessen {
-                padding: 16px 12px;
-                border: none;
-                border-radius: 10px;
-                background-color: #15803d;
-                color: white;
-                font-family: "League Spartan", sans-serif;
-                font-size: 18px;
+                padding: 13px 10px;
+                border: 1px solid var(--accent-action);
+                border-radius: 8px;
+                background-color: var(--accent-action);
+                color: #ffffff;
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
                 cursor: pointer;
-                transition: 0.1s;
-            }
-
-            .modal-abschliessen:hover {
-                background-color: #166534;
             }
 
             .modal-abschliessen:disabled {
-                background-color: #d6d6d6;
-                color: #999;
+                background-color: var(--surface-muted);
+                border-color: var(--line-subtle);
+                color: #94a3b8;
                 cursor: not-allowed;
             }
 
-            @media (max-width: 600px) {
+            /* TABLET (GALAXY TAB S10 FE+ & BREITER) */
+            @media (min-width: 768px) {
                 body {
-                    padding: 0;
-                    padding-bottom: 150px;
+                    padding-bottom: 20px;
                 }
 
-                .kasse {
-                    padding: 0 10px;
+                .pos-shell {
+                    display: grid;
+                    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
+                    gap: 18px;
+                    align-items: start;
+                    padding: 18px 18px 0;
                 }
 
                 .produkte {
+                    grid-template-columns: repeat(2, 1fr);
                     gap: 10px;
                 }
 
-                .produkt {
-                    padding: 40px 10px;
-                    font-size: 17px;
-                }
-
-                .preis {
-                    font-size: 14px;
-                }
-
-                .minus-button {
-                    font-size: 16px;
-                }
-
-                .gesamt {
-                    font-size: 25px;
-                }
-
-                .aktions-buttons {
-                    grid-template-columns: 1fr;
-                }
-
-                .warenkorb > .gesamt,
-                .warenkorb > .aktions-buttons {
-                    display: none;
+                .warenkorb {
+                    margin-top: 0;
+                    position: sticky;
+                    top: 16px;
                 }
 
                 .mobile-warenkorb {
-                    position: fixed;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    z-index: 10;
-                    display: grid;
-                    gap: 12px;
-                    padding: 18px 12px calc(16px + env(safe-area-inset-bottom));
-                    background-color: white;
-                    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.18);
-                }
-
-                .mobile-aktions-buttons {
-                    display: grid;
-                    grid-template-columns: 1fr 1fr;
-                    gap: 10px;
-                }
-
-                .mobile-warenkorb .loeschen,
-                .mobile-warenkorb .bezahlen {
-                    padding: 14px 8px;
-                    font-size: 14px;
-                }
-
-                .mobile-gesamt {
-                    margin: 0;
-                    font-size: 24px;
+                    display: none;
                 }
             }
         </style>
     </head>
     <body>
-        <!-- BANNER -->
-        <div class="banner">
-            <div class="banner-left">
+        <header class="topbar">
+            <div class="topbar-brand">
                 <img
                     src="Logo1zu1.png"
                     alt="Messdiener Logo"
@@ -693,200 +719,245 @@
                     loading="eager"
                     decoding="async"
                 />
-                <div class="banner-text">
-                    <span class="banner-title">AVANTI MINISTRARE</span>
-                    <span class="banner-subtitle">Lembeck Leuchtet • 27.11.2026</span>
+                <div class="topbar-titles">
+                    <span class="topbar-title">AVANTI MINISTRARE</span>
+                    <span class="topbar-meta">Lembeck Leuchtet • 27.11.2026</span>
                 </div>
             </div>
-        </div>
+            <span class="topbar-pill">Bar-Kasse</span>
+        </header>
 
-        <div class="kasse">
-            <h2>Bitte Produkte auswählen</h2>
+        <main class="pos-shell">
+            <section class="produkte-bereich" aria-label="Produkte">
+                <div class="section-header">
+                    <h1 class="section-title">Artikelauswahl</h1>
+                    <span class="section-sub">+2,00 € Pfand je Getränk</span>
+                </div>
 
-            <!-- PRODUKTE -->
-            <div class="produkte">
-                <!-- GLÜHWEIN -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Glühwein')">
-                        <img
-                            class="produkt-bild"
-                            src="gluehwein.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Glühwein
+                <div class="produkte">
+                    <!-- GLÜHWEIN -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="gluehwein.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Glühwein</span>
+                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
+                                </span>
+                            </span>
                             <span class="preis">3,50 €</span>
-                        </span>
-                    </button>
-                    <button
-                        id="minus-Glühwein"
-                        class="minus-button"
-                        onclick="entfernen('Glühwein')"
-                        style="display: none"
-                    >
-                        - 0
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Glühwein"
+                            class="minus-button"
+                            onclick="entfernen('Glühwein')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
 
-                <!-- GLÜHWEIN MIT SCHUSS -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Glühwein-Schuss')">
-                        <img
-                            class="produkt-bild"
-                            src="gluehwein-schuss.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Glühwein mit Schuss
+                    <!-- GLÜHWEIN MIT SCHUSS -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein-Schuss')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="gluehwein-schuss.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Glühwein mit Schuss</span>
+                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
+                                </span>
+                            </span>
                             <span class="preis">4,00 €</span>
-                        </span>
-                    </button>
-                    <button
-                        id="minus-Glühwein-Schuss"
-                        class="minus-button"
-                        onclick="entfernen('Glühwein-Schuss')"
-                        style="display: none"
-                    >
-                        - 0
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Glühwein-Schuss"
+                            class="minus-button"
+                            onclick="entfernen('Glühwein-Schuss')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
 
-                <!-- KAKAO -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Kakao')">
-                        <img
-                            class="produkt-bild"
-                            src="kakao.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Kakao
+                    <!-- KAKAO -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Kakao')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="kakao.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Kakao</span>
+                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
+                                </span>
+                            </span>
                             <span class="preis">2,50 €</span>
-                        </span>
-                    </button>
-                    <button id="minus-Kakao" class="minus-button" onclick="entfernen('Kakao')" style="display: none">
-                        - 0
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Kakao"
+                            class="minus-button"
+                            onclick="entfernen('Kakao')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
 
-                <!-- KAKAO MIT SCHUSS -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Kakao-Schuss')">
-                        <img
-                            class="produkt-bild"
-                            src="kakao-schuss.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Kakao mit Schuss
+                    <!-- KAKAO MIT SCHUSS -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Kakao-Schuss')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="kakao-schuss.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Kakao mit Schuss</span>
+                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
+                                </span>
+                            </span>
                             <span class="preis">4,00 €</span>
-                        </span>
-                    </button>
-                    <button
-                        id="minus-Kakao-Schuss"
-                        class="minus-button"
-                        onclick="entfernen('Kakao-Schuss')"
-                        style="display: none"
-                    >
-                        - 0
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Kakao-Schuss"
+                            class="minus-button"
+                            onclick="entfernen('Kakao-Schuss')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
 
-                <!-- KINDERPUNSCH -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Kinderpunsch')">
-                        <img
-                            class="produkt-bild"
-                            src="kinderpunsch.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Kinderpunsch
+                    <!-- KINDERPUNSCH -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Kinderpunsch')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="kinderpunsch.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Kinderpunsch</span>
+                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
+                                </span>
+                            </span>
                             <span class="preis">2,00 €</span>
-                        </span>
-                    </button>
-                    <button
-                        id="minus-Kinderpunsch"
-                        class="minus-button"
-                        onclick="entfernen('Kinderpunsch')"
-                        style="display: none"
-                    >
-                        - 0
-                    </button>
-                </div>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Kinderpunsch"
+                            class="minus-button"
+                            onclick="entfernen('Kinderpunsch')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
 
-                <!-- PFANDRÜCKGABE -->
-                <div class="produkt-container">
-                    <button class="produkt" onclick="Hinzufuegen('Pfandrückgabe')">
-                        <img
-                            class="produkt-bild"
-                            src="pfand.png"
-                            alt=""
-                            width="240"
-                            height="240"
-                            loading="eager"
-                            decoding="async"
-                        />
-                        <span class="produkt-inhalt">
-                            Pfandrückgabe
+                    <!-- PFANDRÜCKGABE -->
+                    <div class="produkt-container">
+                        <button type="button" class="produkt" onclick="Hinzufuegen('Pfandrückgabe')">
+                            <span class="produkt-links">
+                                <img
+                                    class="produkt-bild"
+                                    src="pfand.png"
+                                    alt=""
+                                    width="240"
+                                    height="240"
+                                    loading="eager"
+                                    decoding="async"
+                                />
+                                <span class="produkt-inhalt">
+                                    <span class="produkt-name">Pfandrückgabe</span>
+                                    <span class="produkt-pfandhinweis">Gutschrift je Becher</span>
+                                </span>
+                            </span>
                             <span class="preis">-2,00 €</span>
-                        </span>
-                    </button>
-                    <button
-                        id="minus-Pfandrückgabe"
-                        class="minus-button"
-                        onclick="entfernen('Pfandrückgabe')"
-                        style="display: none"
-                    >
-                        - 0
-                    </button>
+                        </button>
+                        <button
+                            type="button"
+                            id="minus-Pfandrückgabe"
+                            class="minus-button"
+                            onclick="entfernen('Pfandrückgabe')"
+                            style="display: none"
+                        >
+                            - 0
+                        </button>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <!-- WARENKORB -->
-            <div class="warenkorb">
-                <h2>Bestellung</h2>
+            <aside class="warenkorb" aria-label="Bon">
+                <div class="warenkorb-kopf">
+                    <h2>Aktueller Bon</h2>
+                    <span class="section-sub">EUR</span>
+                </div>
                 <div id="warenkorb">
-                    <p class="leer">Keine Bestellungen aufgenommen.</p>
+                    <p class="leer">Keine Positionen erfasst.</p>
                 </div>
-                <div class="gesamt" id="gesamt">Gesamt: 0,00 €</div>
+                <div class="gesamt" id="gesamt">
+                    <span>Gesamt</span>
+                    <span>0,00 €</span>
+                </div>
                 <div class="aktions-buttons">
-                    <button id="loeschen-button" class="loeschen" onclick="loeschen()" disabled>
-                        Bestellung löschen
+                    <button type="button" id="loeschen-button" class="loeschen" onclick="loeschen()" disabled>
+                        Verwerfen
                     </button>
-                    <button id="bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>Bezahlen</button>
+                    <button type="button" id="bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>
+                        Kassieren
+                    </button>
                 </div>
-            </div>
-        </div>
+            </aside>
+        </main>
 
-        <!-- MOBILE WARENKORB LEISTE -->
-        <div class="mobile-warenkorb" aria-label="Warenkorb und Kasse">
-            <div class="gesamt mobile-gesamt" id="mobile-gesamt">Gesamt: 0,00 €</div>
+        <div class="mobile-warenkorb" aria-label="Schnellkasse">
+            <div class="gesamt mobile-gesamt" id="mobile-gesamt">
+                <span>Gesamt</span>
+                <span>0,00 €</span>
+            </div>
             <div class="mobile-aktions-buttons">
-                <button id="mobile-loeschen-button" class="loeschen" onclick="loeschen()" disabled>
-                    Bestellung löschen
+                <button type="button" id="mobile-loeschen-button" class="loeschen" onclick="loeschen()" disabled>
+                    Verwerfen
                 </button>
-                <button id="mobile-bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>Bezahlen</button>
+                <button type="button" id="mobile-bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>
+                    Kassieren
+                </button>
             </div>
         </div>
 
@@ -894,7 +965,7 @@
         <div id="bezahl-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-titel">
             <div class="modal-box">
                 <div class="modal-header">
-                    <h3 id="modal-titel">Barzahlung &amp; Rückgeld</h3>
+                    <h3 id="modal-titel">Barzahlung</h3>
                     <button type="button" class="modal-close" onclick="schliesseBezahlModal()" aria-label="Schließen">
                         &times;
                     </button>
@@ -908,7 +979,7 @@
 
                     <div id="bar-eingabe-bereich">
                         <div class="eingabe-gruppe">
-                            <label class="eingabe-label" for="gegeben-input">Gegebener Betrag</label>
+                            <label class="eingabe-label" for="gegeben-input">Gegeben</label>
                             <div class="eingabe-zeile">
                                 <div class="gegeben-input-wrapper">
                                     <input
@@ -964,14 +1035,8 @@
             </div>
         </div>
 
-        <footer class="footer" style="margin-top: 50px">
-            <div class="footer-brand">
-                <span class="footer-titel">AVANTI MINISTRARE &copy;</span>
-            </div>
-            <div class="footer-credits">
-                Entwickelt von Marcel H. <br />
-                Messdiener Lembeck - 2026
-            </div>
+        <footer class="footer">
+            AVANTI MINISTRARE • Messdiener Lembeck • 2026
         </footer>
 
         <script>
@@ -990,6 +1055,19 @@
 
             function formatiereEuro(betrag) {
                 return betrag.toFixed(2).replace(".", ",") + " €";
+            }
+
+            function setzeGesamtAnzeige(betrag) {
+                const formatiert = formatiereEuro(betrag);
+                const desktopGesamt = document.getElementById("gesamt");
+                const mobileGesamt = document.getElementById("mobile-gesamt");
+
+                if (desktopGesamt) {
+                    desktopGesamt.innerHTML = `<span>Gesamt</span><span>${formatiert}</span>`;
+                }
+                if (mobileGesamt) {
+                    mobileGesamt.innerHTML = `<span>Gesamt</span><span>${formatiert}</span>`;
+                }
             }
 
             function Hinzufuegen(id) {
@@ -1025,7 +1103,6 @@
 
             function aktualisiereWarenkorb() {
                 const warenkorb = document.getElementById("warenkorb");
-                const gesamtAnzeigen = document.querySelectorAll(".gesamt");
                 const loeschenButtons = document.querySelectorAll(".loeschen");
                 const bezahlenButtons = document.querySelectorAll(".bezahlen");
 
@@ -1050,15 +1127,15 @@
                     const zeile = document.createElement("div");
                     zeile.className = "warenkorb-zeile";
                     zeile.innerHTML = `
-          <span class="warenkorb-produkt">${id} x ${anzahl}</span>
-          <span class="warenkorb-preis">${formatiereEuro(produktGesamt)}</span>
-        `;
+                        <span class="warenkorb-produkt">${id} × ${anzahl}</span>
+                        <span class="warenkorb-preis">${formatiereEuro(produktGesamt)}</span>
+                    `;
                     warenkorb.appendChild(zeile);
 
                     const minusButton = document.getElementById(`minus-${id}`);
                     if (minusButton) {
                         minusButton.style.display = "block";
-                        minusButton.innerText = "- " + anzahl;
+                        minusButton.innerText = "− " + anzahl;
                     }
                 }
 
@@ -1073,8 +1150,8 @@
 
                 if (!hatBestellungen) {
                     aktuellerGesamtbetrag = 0;
-                    warenkorb.innerHTML = "<p class='leer'>Keine Bestellungen aufgenommen.</p>";
-                    gesamtAnzeigen.forEach((anzeige) => (anzeige.innerText = "Gesamt: 0,00 €"));
+                    warenkorb.innerHTML = "<p class='leer'>Keine Positionen erfasst.</p>";
+                    setzeGesamtAnzeige(0);
                     return;
                 }
 
@@ -1083,15 +1160,14 @@
                     const pfandZeile = document.createElement("div");
                     pfandZeile.className = "warenkorb-zeile";
                     pfandZeile.innerHTML = `
-          <span class="warenkorb-produkt">Pfand x ${anzahlGetraenke}</span>
-          <span class="warenkorb-preis">${formatiereEuro(pfandGesamt)}</span>
-        `;
+                        <span class="warenkorb-produkt">Pfand × ${anzahlGetraenke}</span>
+                        <span class="warenkorb-preis">${formatiereEuro(pfandGesamt)}</span>
+                    `;
                     warenkorb.appendChild(pfandZeile);
                 }
 
                 aktuellerGesamtbetrag = Math.round((getraenkeGesamt + pfandGesamt) * 100) / 100;
-                const gesamtText = `Gesamt: ${formatiereEuro(aktuellerGesamtbetrag)}`;
-                gesamtAnzeigen.forEach((anzeige) => (anzeige.innerText = gesamtText));
+                setzeGesamtAnzeige(aktuellerGesamtbetrag);
             }
 
             function bezahlen() {
@@ -1105,7 +1181,6 @@
                 const eingabeBereich = document.getElementById("bar-eingabe-bereich");
 
                 if (aktuellerGesamtbetrag < 0) {
-                    // Reine Pfandrückgabe -> Kunde bekommt Geld raus
                     betragLabel.innerText = "Auszahlung an Gast";
                     gesamtWert.innerText = formatiereEuro(Math.abs(aktuellerGesamtbetrag));
                     eingabeBereich.style.display = "none";
@@ -1154,7 +1229,6 @@
 
                 box.classList.remove("bereit", "zu-wenig");
 
-                // Sonderfall: reine Pfandrückgabe (Gesamtbetrag <= 0)
                 if (aktuellerGesamtbetrag <= 0) {
                     const auszahlung = Math.abs(aktuellerGesamtbetrag);
                     box.classList.add("bereit");
@@ -1189,7 +1263,6 @@
                 schliesseBezahlModal();
             }
 
-            // Schließen per Escape-Taste
             document.addEventListener("keydown", function (event) {
                 if (event.key === "Escape") {
                     schliesseBezahlModal();
