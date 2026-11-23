@@ -3,12 +3,16 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Avanti Ministrare • Kasse</title>
+        <meta name="theme-color" content="#7a161f" />
+        <title>Avanti Ministrare</title>
+
+        <link rel="manifest" href="manifest.json" />
+        <link rel="apple-touch-icon" href="Logo1zu1.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@600;700&display=swap"
             rel="stylesheet"
         />
         <link rel="preload" as="image" href="gluehwein.png" />
@@ -19,33 +23,12 @@
         <link rel="preload" as="image" href="pfand.png" />
 
         <style>
-            :root {
-                --surface-app: #f4f6f8;
-                --surface-card: #ffffff;
-                --surface-muted: #eef2f6;
-                --ink-primary: #0f172a;
-                --ink-secondary: #475569;
-                --ink-muted: #64748b;
-                --line-subtle: #e2e8f0;
-                --line-strong: #cbd5e1;
-                --accent-brand: #1e293b;
-                --accent-action: #15803d;
-                --accent-action-hover: #166534;
-                --accent-action-soft: #f0fdf4;
-                --accent-danger: #dc2626;
-                --accent-danger-soft: #fef2f2;
-            }
-
-            * {
-                box-sizing: border-box;
-            }
-
             body {
-                margin: 0;
-                padding: 0 0 156px 0;
                 font-family: "Inter", sans-serif;
-                background-color: var(--surface-app);
-                color: var(--ink-primary);
+                background-color: #f5f2e0;
+                color: #2d3436;
+                margin: 0;
+                padding: 0;
                 font-variant-numeric: tabular-nums;
                 -webkit-tap-highlight-color: transparent;
             }
@@ -54,96 +37,95 @@
                 font-family: inherit;
             }
 
-            /* TOP-BAR */
-            .topbar {
-                background-color: var(--accent-brand);
-                color: #ffffff;
-                padding: 12px 16px;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            .banner {
+                background-color: #7a161f;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='72' viewBox='0 0 150 72'%3E%3Cg fill='%23D6AE69' fill-opacity='.2'%3E%3Cpath d='M17 8l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M81 18l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M132 7l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3Cpath d='M43 48l1.5 4 4 .2-3.1 2.5 1.2 4-3.6-2.2-3.6 2.2 1.2-4-3.1-2.5 4-.2z'/%3E%3Cpath d='M112 45l2 5 5 .2-4 3.2 1.5 5-4.5-2.8-4.5 2.8 1.5-5-4-3.2 5-.2z'/%3E%3C/g%3E%3C/svg%3E");
+                background-repeat: repeat;
+                padding: 12px 15px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
+                gap: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
             }
 
-            .topbar-brand {
+            .banner-left {
                 display: flex;
                 align-items: center;
-                gap: 11px;
+                gap: 12px;
+                min-width: 0;
             }
 
-            .logo {
-                width: 38px;
-                height: 38px;
-                border-radius: 8px;
-                object-fit: cover;
-                background-color: #ffffff;
-                border: 1px solid rgba(255, 255, 255, 0.25);
-            }
-
-            .topbar-titles {
+            .banner-text {
                 display: flex;
                 flex-direction: column;
             }
 
-            .topbar-title {
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
-                font-weight: 800;
-                letter-spacing: -0.01em;
-                line-height: 1.15;
+            .banner-title {
+                color: #f5f2e0;
+                font-family: "League Spartan", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                letter-spacing: 0.5px;
+                line-height: 1.1;
             }
 
-            .topbar-meta {
-                font-size: 12px;
-                color: #cbd5e1;
+            .banner-subtitle {
+                color: #b88b4a;
+                font-family: "Inter", sans-serif;
+                font-size: 13px;
+                font-weight: 500;
                 margin-top: 2px;
             }
 
-            .topbar-pill {
-                font-size: 11px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.06em;
-                color: #e2e8f0;
-                background-color: rgba(255, 255, 255, 0.1);
-                padding: 5px 9px;
-                border-radius: 6px;
+            .logo {
+                width: 45px;
+                height: 45px;
+                border-radius: 50%;
+                object-fit: cover;
+                background-color: #f5f2e0;
+                border: 2px solid #f5f2e0;
+                flex-shrink: 0;
             }
 
-            /* LAYOUT */
-            .pos-shell {
-                max-width: 1260px;
-                margin: 0 auto;
-                padding: 14px 12px 0;
-            }
-
-            .section-header {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                margin-bottom: 10px;
-            }
-
-            .section-title {
-                margin: 0;
-                font-family: "Plus Jakarta Sans", sans-serif;
+            .journal-btn {
+                background-color: rgba(245, 242, 224, 0.14);
+                border: 1.5px solid rgba(245, 242, 224, 0.45);
+                color: #f5f2e0;
+                padding: 8px 12px;
+                border-radius: 8px;
+                font-family: "League Spartan", sans-serif;
                 font-size: 14px;
                 font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: var(--ink-secondary);
+                letter-spacing: 0.3px;
+                cursor: pointer;
+                white-space: nowrap;
+                transition: background-color 0.12s;
             }
 
-            .section-sub {
-                font-size: 12px;
-                color: var(--ink-muted);
+            .journal-btn:hover {
+                background-color: rgba(245, 242, 224, 0.25);
             }
 
-            /* PRODUKT-KACHELN (2 SPALTEN, GROSSE TOUCH-FLÄCHEN) */
+            h2 {
+                color: #2d3436;
+                font-family: "League Spartan", sans-serif;
+                margin-top: 28px;
+                margin-bottom: 8px;
+                text-align: center;
+            }
+
+            .kasse {
+                max-width: 900px;
+                margin: auto;
+                text-align: left;
+            }
+
             .produkte {
                 display: grid;
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
+                margin-top: 10px;
             }
 
             .produkt-container {
@@ -154,256 +136,252 @@
 
             .produkt {
                 width: 100%;
-                min-height: 148px;
-                background-color: var(--surface-card);
-                border: 1.5px solid var(--line-subtle);
-                border-radius: 12px;
-                padding: 14px 10px;
+                height: 150px;
+                position: relative;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                text-align: center;
+                box-sizing: border-box;
+                background-color: white;
+                border: 2px solid transparent;
+                border-radius: 12px;
+                padding: 20px 12px;
+                font-size: 19px;
+                font-family: "Inter", sans-serif;
                 cursor: pointer;
-                transition: border-color 0.12s ease, background-color 0.12s ease, transform 0.06s ease;
-            }
-
-            .produkt:hover {
-                border-color: var(--accent-brand);
-                background-color: #fafbfd;
-            }
-
-            .produkt:active {
-                transform: scale(0.98);
-                background-color: var(--surface-muted);
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+                transition:
+                    background-color 0.12s,
+                    border-color 0.12s,
+                    transform 0.08s;
             }
 
             .produkt-bild {
-                width: 60px;
-                height: 60px;
+                width: 68px;
+                height: 68px;
                 object-fit: contain;
-                margin-bottom: 8px;
+                opacity: 1;
                 pointer-events: none;
             }
 
             .produkt-inhalt {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 5px;
+                position: relative;
+                z-index: 1;
+                display: block;
+                margin-top: 4px;
             }
 
-            .produkt-name {
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
-                font-weight: 700;
-                line-height: 1.2;
-                color: var(--ink-primary);
+            .produkt:hover {
+                background-color: #fcefdc;
+                border: 2px solid #b88b4a;
             }
 
-            .preis {
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 14px;
-                font-weight: 700;
-                color: var(--ink-secondary);
-                background-color: var(--surface-muted);
-                padding: 3px 10px;
-                border-radius: 6px;
-            }
-
-            .minus-button {
-                width: 100%;
-                padding: 10px 8px;
-                background-color: var(--surface-card);
-                border: 1.5px solid #fecaca;
-                border-radius: 10px;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
-                font-weight: 700;
-                color: var(--accent-danger);
-                cursor: pointer;
-                transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
-            }
-
-            .minus-button:hover {
-                background-color: var(--accent-danger-soft);
-                border-color: var(--accent-danger);
-            }
-
-            .minus-button:active {
+            .produkt:active {
                 transform: scale(0.98);
             }
 
-            /* BON / WARENKORB */
-            .warenkorb {
-                margin-top: 20px;
-                background-color: var(--surface-card);
-                border: 1.5px solid var(--line-subtle);
-                border-radius: 12px;
-                padding: 16px;
+            /* Visuelles Feedback bei Klick / aktiver Position */
+            .produkt.hat-anzahl {
+                border-color: #b88b4a;
             }
 
-            .warenkorb-kopf {
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                padding-bottom: 10px;
-                border-bottom: 1px solid var(--line-subtle);
+            .produkt.klick-flash {
+                background-color: #fcefdc;
+                border-color: #7a161f;
             }
 
-            .warenkorb-kopf h2 {
-                margin: 0;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 14px;
+            .anzahl-badge {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                min-width: 28px;
+                height: 28px;
+                padding: 0 7px;
+                border-radius: 999px;
+                background-color: #7a161f;
+                color: #f5f2e0;
+                font-family: "League Spartan", sans-serif;
+                font-size: 15px;
                 font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: var(--ink-secondary);
+                display: none;
+                align-items: center;
+                justify-content: center;
+                box-sizing: border-box;
+                pointer-events: none;
+            }
+
+            .anzahl-badge.sichtbar {
+                display: flex;
+            }
+
+            .preis {
+                display: block;
+                margin-top: 6px;
+                font-size: 16px;
+                color: #666;
+            }
+
+            .minus-button {
+                width: 85%;
+                align-self: center;
+                padding: 8px;
+                background-color: #e9ecef;
+                border: none;
+                border-radius: 8px;
+                font-size: 18px;
+                font-weight: bold;
+                cursor: pointer;
+                transition: 0.1s;
+            }
+
+            .minus-button:hover {
+                background-color: #ef4444;
+                color: white;
+            }
+
+            .minus-button:active {
+                transform: scale(0.97);
+            }
+
+            .warenkorb {
+                background-color: white;
+                margin-top: 30px;
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+            }
+
+            .warenkorb h2 {
+                text-align: center;
+                margin-top: 0;
             }
 
             .warenkorb-zeile {
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 10px 0;
-                border-bottom: 1px solid var(--surface-muted);
-                font-size: 15px;
-            }
-
-            .warenkorb-zeile:last-child {
-                border-bottom: none;
+                padding: 12px 0;
+                border-bottom: 1px solid #ddd;
             }
 
             .warenkorb-produkt {
-                color: var(--ink-primary);
-                font-weight: 500;
+                font-size: 17px;
             }
 
             .warenkorb-preis {
-                font-weight: 700;
-                color: var(--ink-primary);
+                font-weight: bold;
             }
 
             .leer {
-                margin: 0;
-                padding: 20px 8px;
+                color: #888;
                 text-align: center;
-                color: var(--ink-muted);
-                font-size: 14px;
             }
 
             .gesamt {
-                margin-top: 12px;
-                padding-top: 12px;
-                border-top: 1.5px solid var(--line-strong);
-                display: flex;
-                justify-content: space-between;
-                align-items: baseline;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 23px;
-                font-weight: 800;
-                color: var(--ink-primary);
+                font-size: 28px;
+                font-weight: bold;
+                font-family: "League Spartan", sans-serif;
+                text-align: right;
+                margin-top: 20px;
+                color: #2d3436;
             }
 
             .aktions-buttons {
                 display: grid;
-                grid-template-columns: 1fr 1.6fr;
-                gap: 10px;
-                margin-top: 14px;
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+                margin-top: 20px;
             }
 
-            .loeschen,
-            .bezahlen {
-                width: 100%;
-                padding: 15px 12px;
-                border-radius: 10px;
-                font-family: "Plus Jakarta Sans", sans-serif;
+            .mobile-warenkorb {
+                display: none;
+            }
+
+            .footer {
+                padding: 24px 16px 30px;
+                color: #666;
+                text-align: center;
+                font-size: 13px;
+            }
+
+            .footer-titel {
+                display: block;
+                margin-bottom: 5px;
+                color: #7a161f;
+                font-family: "League Spartan", sans-serif;
                 font-size: 16px;
                 font-weight: 700;
-                cursor: pointer;
-                transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
+                letter-spacing: 0.4px;
             }
 
             .loeschen {
-                background-color: var(--surface-card);
-                border: 1.5px solid var(--line-strong);
-                color: var(--ink-secondary);
+                width: 100%;
+                padding: 18px;
+                border: none;
+                border-radius: 10px;
+                background-color: #ef4444;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                font-family: "League Spartan", sans-serif;
+                cursor: pointer;
+                transition: 0.1s;
             }
 
             .loeschen:hover:not(:disabled) {
-                background-color: var(--accent-danger-soft);
-                border-color: #fca5a5;
-                color: var(--accent-danger);
+                background-color: #dc2828;
             }
 
-            .bezahlen {
-                background-color: var(--accent-action);
-                border: 1.5px solid var(--accent-action);
-                color: #ffffff;
+            .loeschen:active:not(:disabled) {
+                transform: scale(0.98);
             }
 
-            .bezahlen:hover:not(:disabled) {
-                background-color: var(--accent-action-hover);
-            }
-
-            .loeschen:active:not(:disabled),
-            .bezahlen:active:not(:disabled) {
-                transform: scale(0.985);
-            }
-
-            .loeschen:disabled,
-            .bezahlen:disabled {
-                background-color: var(--surface-muted);
-                border-color: var(--line-subtle);
-                color: #94a3b8;
+            .loeschen:disabled {
+                background-color: #d6d6d6;
+                color: #999;
                 cursor: not-allowed;
             }
 
-            /* MOBILE BOTTOM BAR */
-            .mobile-warenkorb {
-                position: fixed;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                z-index: 25;
-                background-color: var(--surface-card);
-                border-top: 1.5px solid var(--line-strong);
-                padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
-                display: grid;
-                gap: 10px;
-            }
-
-            .mobile-gesamt {
-                margin: 0;
-                padding: 0;
+            .bezahlen {
+                width: 100%;
+                padding: 18px;
                 border: none;
-                font-size: 22px;
+                border-radius: 10px;
+                background-color: #15803d;
+                color: white;
+                font-size: 18px;
+                font-weight: bold;
+                font-family: "League Spartan", sans-serif;
+                cursor: pointer;
+                transition: 0.1s;
             }
 
-            .mobile-aktions-buttons {
-                display: grid;
-                grid-template-columns: 1fr 1.6fr;
-                gap: 10px;
+            .bezahlen:hover:not(:disabled) {
+                background-color: #166534;
             }
 
-            /* FOOTER */
-            .footer {
-                padding: 22px 16px 14px;
-                text-align: center;
-                font-size: 12px;
-                color: var(--ink-muted);
+            .bezahlen:active:not(:disabled) {
+                transform: scale(0.98);
             }
 
-            /* OVERLAY / MODAL */
+            .bezahlen:disabled {
+                background-color: #d6d6d6;
+                color: #999;
+                cursor: not-allowed;
+            }
+
+            /* MODALS (RÜCKGELD, LÖSCHEN, JOURNAL) */
             .modal-backdrop {
                 position: fixed;
                 inset: 0;
                 z-index: 100;
-                background-color: rgba(15, 23, 42, 0.58);
+                background-color: rgba(45, 52, 54, 0.76);
                 display: none;
                 align-items: center;
                 justify-content: center;
                 padding: 14px;
+                box-sizing: border-box;
             }
 
             .modal-backdrop.aktiv {
@@ -412,83 +390,103 @@
 
             .modal-box {
                 width: 100%;
-                max-width: 430px;
-                background-color: var(--surface-card);
-                border: 1px solid var(--line-subtle);
-                border-radius: 12px;
+                max-width: 440px;
+                max-height: 90vh;
+                display: flex;
+                flex-direction: column;
+                background-color: #ffffff;
+                border-radius: 16px;
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
                 overflow: hidden;
+                animation: modalEinblenden 0.14s ease-out;
+            }
+
+            @keyframes modalEinblenden {
+                from {
+                    opacity: 0;
+                    transform: translateY(10px) scale(0.98);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0) scale(1);
+                }
             }
 
             .modal-header {
-                background-color: var(--accent-brand);
-                color: #ffffff;
-                padding: 14px 16px;
+                background-color: #7a161f;
+                color: #f5f2e0;
+                padding: 16px 20px;
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
+                align-items: center;
+                flex-shrink: 0;
             }
 
             .modal-header h3 {
                 margin: 0;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 17px;
-                font-weight: 700;
+                font-family: "League Spartan", sans-serif;
+                font-size: 22px;
+                letter-spacing: 0.3px;
             }
 
             .modal-close {
-                width: 32px;
-                height: 32px;
-                border-radius: 6px;
-                border: 1px solid rgba(255, 255, 255, 0.2);
-                background-color: rgba(255, 255, 255, 0.08);
-                color: #ffffff;
-                font-size: 18px;
+                background: rgba(255, 255, 255, 0.15);
+                border: none;
+                color: #f5f2e0;
+                width: 34px;
+                height: 34px;
+                border-radius: 8px;
+                font-size: 20px;
+                font-weight: bold;
                 cursor: pointer;
                 display: flex;
                 align-items: center;
                 justify-content: center;
             }
 
+            .modal-close:hover {
+                background: rgba(255, 255, 255, 0.28);
+            }
+
             .modal-body {
-                padding: 16px;
+                padding: 20px;
+                overflow-y: auto;
             }
 
             .betrag-karte {
-                background-color: var(--surface-app);
-                border: 1px solid var(--line-subtle);
-                border-radius: 8px;
-                padding: 12px 14px;
+                background-color: #f5f2e0;
+                border: 2px solid #e6dfc3;
+                border-radius: 12px;
+                padding: 14px 16px;
                 display: flex;
-                align-items: center;
                 justify-content: space-between;
-                margin-bottom: 14px;
+                align-items: center;
+                margin-bottom: 16px;
             }
 
             .betrag-label {
-                font-size: 12px;
+                font-size: 15px;
                 font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.05em;
-                color: var(--ink-secondary);
+                color: #555;
             }
 
             .betrag-wert {
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 26px;
-                font-weight: 800;
-                color: var(--ink-primary);
+                font-family: "League Spartan", sans-serif;
+                font-size: 30px;
+                font-weight: 700;
+                color: #2d3436;
             }
 
             .eingabe-gruppe {
-                margin-bottom: 10px;
+                margin-bottom: 14px;
             }
 
             .eingabe-label {
                 display: block;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: 600;
-                color: var(--ink-secondary);
-                margin-bottom: 5px;
+                margin-bottom: 6px;
+                color: #2d3436;
             }
 
             .eingabe-zeile {
@@ -503,198 +501,366 @@
 
             .gegeben-input {
                 width: 100%;
-                padding: 12px 32px 12px 12px;
-                border: 1.5px solid var(--line-strong);
-                border-radius: 8px;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 21px;
+                box-sizing: border-box;
+                padding: 14px 36px 14px 14px;
+                font-size: 24px;
                 font-weight: 700;
+                font-family: "League Spartan", sans-serif;
+                border: 2px solid #ccc;
+                border-radius: 10px;
+                color: #2d3436;
                 text-align: right;
-                color: var(--ink-primary);
             }
 
             .gegeben-input:focus {
                 outline: none;
-                border-color: var(--accent-brand);
+                border-color: #b88b4a;
+                background-color: #fffdf7;
             }
 
             .euro-suffix {
                 position: absolute;
-                right: 12px;
+                right: 14px;
                 top: 50%;
                 transform: translateY(-50%);
-                font-size: 16px;
+                font-size: 20px;
                 font-weight: 700;
-                color: var(--ink-muted);
+                color: #666;
                 pointer-events: none;
             }
 
             .clear-input-btn {
                 padding: 0 16px;
-                border: 1.5px solid var(--line-strong);
-                border-radius: 8px;
-                background-color: var(--surface-muted);
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
+                background-color: #e9ecef;
+                border: none;
+                border-radius: 10px;
+                font-family: "League Spartan", sans-serif;
+                font-size: 18px;
                 font-weight: 700;
-                color: var(--ink-primary);
+                color: #2d3436;
                 cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .clear-input-btn:hover {
+                background-color: #dee2e6;
             }
 
             .schnell-betraege {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
                 gap: 8px;
-                margin-bottom: 14px;
+                margin-bottom: 18px;
             }
 
             .schnell-btn {
-                padding: 12px 8px;
-                border: 1.5px solid var(--line-subtle);
-                border-radius: 8px;
-                background-color: var(--surface-card);
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
+                padding: 13px 8px;
+                background-color: #f8f9fa;
+                border: 2px solid #dee2e6;
+                border-radius: 10px;
+                font-family: "League Spartan", sans-serif;
+                font-size: 17px;
                 font-weight: 700;
-                color: var(--ink-primary);
+                line-height: 1;
+                color: #2d3436;
                 cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: 0.1s;
             }
 
             .schnell-btn:hover {
-                background-color: var(--surface-app);
-                border-color: var(--line-strong);
+                background-color: #fcefdc;
+                border-color: #b88b4a;
+            }
+
+            .schnell-btn:active {
+                transform: scale(0.97);
             }
 
             .schnell-btn.passend {
                 grid-column: span 2;
-                background-color: var(--surface-muted);
-                border-color: var(--line-strong);
-                color: var(--ink-primary);
+                background-color: #fcefdc;
+                border-color: #b88b4a;
+                color: #7a161f;
             }
 
             .rueckgeld-box {
-                border-radius: 8px;
-                padding: 12px;
+                border-radius: 12px;
+                padding: 16px;
                 text-align: center;
-                margin-bottom: 14px;
-                background-color: var(--surface-app);
-                border: 1.5px solid var(--line-subtle);
+                margin-bottom: 18px;
+                background-color: #f1f3f5;
+                border: 2px solid #dee2e6;
+                transition: 0.15s;
             }
 
             .rueckgeld-box.bereit {
-                background-color: var(--accent-action-soft);
-                border-color: #86efac;
+                background-color: #dcfce7;
+                border-color: #15803d;
             }
 
             .rueckgeld-box.zu-wenig {
-                background-color: var(--accent-danger-soft);
-                border-color: #fca5a5;
+                background-color: #fee2e2;
+                border-color: #ef4444;
             }
 
             .rueckgeld-titel {
                 display: block;
-                font-size: 11px;
-                font-weight: 700;
-                text-transform: uppercase;
-                letter-spacing: 0.06em;
-                color: var(--ink-secondary);
-                margin-bottom: 3px;
+                font-size: 14px;
+                font-weight: 600;
+                color: #555;
+                margin-bottom: 4px;
             }
 
             .rueckgeld-box.bereit .rueckgeld-titel {
-                color: var(--accent-action);
+                color: #166534;
             }
 
             .rueckgeld-box.zu-wenig .rueckgeld-titel {
-                color: var(--accent-danger);
+                color: #b91c1c;
             }
 
             .rueckgeld-summe {
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 30px;
-                font-weight: 800;
-                color: var(--ink-primary);
+                font-family: "League Spartan", sans-serif;
+                font-size: 36px;
+                font-weight: 700;
+                color: #2d3436;
             }
 
             .rueckgeld-box.bereit .rueckgeld-summe {
-                color: var(--accent-action);
+                color: #15803d;
             }
 
             .rueckgeld-box.zu-wenig .rueckgeld-summe {
-                color: var(--accent-danger);
+                color: #dc2626;
             }
 
             .modal-aktionen {
                 display: grid;
                 grid-template-columns: 1fr 1.6fr;
-                gap: 8px;
+                gap: 10px;
             }
 
             .modal-abbrechen {
-                padding: 14px 10px;
-                border: 1.5px solid var(--line-strong);
-                border-radius: 8px;
-                background-color: var(--surface-card);
-                color: var(--ink-primary);
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                padding: 16px 12px;
+                border: none;
+                border-radius: 10px;
+                background-color: #e9ecef;
+                color: #2d3436;
+                font-family: "League Spartan", sans-serif;
+                font-size: 17px;
                 font-weight: 700;
                 cursor: pointer;
+            }
+
+            .modal-abbrechen:hover {
+                background-color: #dee2e6;
             }
 
             .modal-abschliessen {
-                padding: 14px 10px;
-                border: 1.5px solid var(--accent-action);
-                border-radius: 8px;
-                background-color: var(--accent-action);
-                color: #ffffff;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                padding: 16px 12px;
+                border: none;
+                border-radius: 10px;
+                background-color: #15803d;
+                color: white;
+                font-family: "League Spartan", sans-serif;
+                font-size: 18px;
+                font-weight: 700;
+                cursor: pointer;
+                transition: 0.1s;
+            }
+
+            .modal-abschliessen:hover:not(:disabled) {
+                background-color: #166534;
+            }
+
+            .modal-abschliessen:disabled {
+                background-color: #d6d6d6;
+                color: #999;
+                cursor: not-allowed;
+            }
+
+            .modal-loeschen-bestaetigen {
+                padding: 16px 12px;
+                border: none;
+                border-radius: 10px;
+                background-color: #ef4444;
+                color: white;
+                font-family: "League Spartan", sans-serif;
+                font-size: 18px;
                 font-weight: 700;
                 cursor: pointer;
             }
 
-            .modal-abschliessen:disabled {
-                background-color: var(--surface-muted);
-                border-color: var(--line-subtle);
-                color: #94a3b8;
-                cursor: not-allowed;
+            .modal-loeschen-bestaetigen:hover {
+                background-color: #dc2828;
             }
 
-            /* TABLET (GALAXY TAB S10 FE+ & BREITER) */
-            @media (min-width: 768px) {
+            .confirm-text {
+                margin: 4px 0 20px;
+                font-size: 16px;
+                line-height: 1.45;
+                color: #2d3436;
+                text-align: center;
+            }
+
+            /* JOURNAL STYLES */
+            .journal-hinweis {
+                font-size: 12px;
+                color: #666;
+                background-color: #f8f9fa;
+                border: 1px solid #e9ecef;
+                border-radius: 8px;
+                padding: 8px 10px;
+                margin-bottom: 14px;
+            }
+
+            .journal-stats {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+                margin-bottom: 14px;
+            }
+
+            .stat-karte {
+                background-color: #f5f2e0;
+                border: 1.5px solid #e6dfc3;
+                border-radius: 10px;
+                padding: 10px 12px;
+            }
+
+            .stat-label {
+                display: block;
+                font-size: 12px;
+                font-weight: 600;
+                color: #666;
+            }
+
+            .stat-wert {
+                font-family: "League Spartan", sans-serif;
+                font-size: 22px;
+                font-weight: 700;
+                color: #2d3436;
+            }
+
+            .journal-abschnitt-titel {
+                font-family: "League Spartan", sans-serif;
+                font-size: 16px;
+                font-weight: 700;
+                margin: 12px 0 6px;
+                color: #2d3436;
+            }
+
+            .journal-liste {
+                border: 1px solid #e9ecef;
+                border-radius: 10px;
+                max-height: 220px;
+                overflow-y: auto;
+                margin-bottom: 14px;
+            }
+
+            .journal-eintrag {
+                padding: 10px 12px;
+                border-bottom: 1px solid #eee;
+                font-size: 14px;
+            }
+
+            .journal-eintrag:last-child {
+                border-bottom: none;
+            }
+
+            .journal-eintrag-kopf {
+                display: flex;
+                justify-content: space-between;
+                font-weight: 700;
+                margin-bottom: 3px;
+            }
+
+            .journal-eintrag-details {
+                font-size: 13px;
+                color: #555;
+            }
+
+            @media (max-width: 600px) {
                 body {
-                    padding-bottom: 20px;
+                    padding: 0;
+                    padding-bottom: 150px;
                 }
 
-                .pos-shell {
-                    display: grid;
-                    grid-template-columns: minmax(0, 1.65fr) minmax(320px, 1fr);
-                    gap: 18px;
-                    align-items: start;
-                    padding: 18px 18px 0;
+                .kasse {
+                    padding: 0 10px;
                 }
 
                 .produkte {
-                    grid-template-columns: repeat(3, 1fr);
-                    gap: 12px;
+                    gap: 10px;
                 }
 
-                .warenkorb {
-                    margin-top: 0;
-                    position: sticky;
-                    top: 16px;
+                .produkt {
+                    padding: 22px 10px 16px;
+                    font-size: 17px;
+                }
+
+                .preis {
+                    font-size: 14px;
+                }
+
+                .minus-button {
+                    font-size: 16px;
+                }
+
+                .gesamt {
+                    font-size: 25px;
+                }
+
+                .aktions-buttons {
+                    grid-template-columns: 1fr;
+                }
+
+                .warenkorb > .gesamt,
+                .warenkorb > .aktions-buttons {
+                    display: none;
                 }
 
                 .mobile-warenkorb {
-                    display: none;
+                    position: fixed;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 10;
+                    display: grid;
+                    gap: 12px;
+                    padding: 18px 12px calc(16px + env(safe-area-inset-bottom));
+                    background-color: white;
+                    box-shadow: 0 -3px 12px rgba(0, 0, 0, 0.18);
+                }
+
+                .mobile-aktions-buttons {
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 10px;
+                }
+
+                .mobile-warenkorb .loeschen,
+                .mobile-warenkorb .bezahlen {
+                    padding: 14px 8px;
+                    font-size: 14px;
+                }
+
+                .mobile-gesamt {
+                    margin: 0;
+                    font-size: 24px;
                 }
             }
         </style>
     </head>
     <body>
-        <header class="topbar">
-            <div class="topbar-brand">
+        <!-- BANNER -->
+        <div class="banner">
+            <div class="banner-left">
                 <img
                     src="Logo1zu1.png"
                     alt="Messdiener Logo"
@@ -704,226 +870,239 @@
                     loading="eager"
                     decoding="async"
                 />
-                <div class="topbar-titles">
-                    <span class="topbar-title">AVANTI MINISTRARE</span>
-                    <span class="topbar-meta">Lembeck Leuchtet • 27.11.2026</span>
+                <div class="banner-text">
+                    <span class="banner-title">AVANTI MINISTRARE</span>
+                    <span class="banner-subtitle">Lembeck Leuchtet • 27.11.2026</span>
                 </div>
             </div>
-            <span class="topbar-pill">Bar-Kasse</span>
-        </header>
+            <button type="button" class="journal-btn" onclick="oeffneJournalModal()">
+                Verlauf (<span id="journal-anzahl-badge">0</span>)
+            </button>
+        </div>
 
-        <main class="pos-shell">
-            <section class="produkte-bereich" aria-label="Produkte">
-                <div class="section-header">
-                    <h1 class="section-title">Artikelauswahl</h1>
-                    <span class="section-sub">+2,00 € Pfand je Getränk</span>
+        <div class="kasse">
+            <h2>Bitte Produkte auswählen</h2>
+
+            <!-- PRODUKTE -->
+            <div class="produkte">
+                <!-- GLÜHWEIN -->
+                <div class="produkt-container">
+                    <button type="button" id="card-gluehwein" class="produkt" onclick="hinzufuegen('gluehwein')">
+                        <span id="badge-gluehwein" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="gluehwein.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Glühwein
+                            <span class="preis">3,50 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-gluehwein"
+                        class="minus-button"
+                        onclick="entfernen('gluehwein')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
                 </div>
 
-                <div class="produkte">
-                    <!-- GLÜHWEIN -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein')">
-                            <img
-                                class="produkt-bild"
-                                src="gluehwein.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Glühwein</span>
-                                <span class="preis">3,50 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Glühwein"
-                            class="minus-button"
-                            onclick="entfernen('Glühwein')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
-
-                    <!-- GLÜHWEIN MIT SCHUSS -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein-Schuss')">
-                            <img
-                                class="produkt-bild"
-                                src="gluehwein-schuss.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Glühwein mit Schuss</span>
-                                <span class="preis">4,00 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Glühwein-Schuss"
-                            class="minus-button"
-                            onclick="entfernen('Glühwein-Schuss')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
-
-                    <!-- KAKAO -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Kakao')">
-                            <img
-                                class="produkt-bild"
-                                src="kakao.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Kakao</span>
-                                <span class="preis">2,50 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Kakao"
-                            class="minus-button"
-                            onclick="entfernen('Kakao')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
-
-                    <!-- KAKAO MIT SCHUSS -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Kakao-Schuss')">
-                            <img
-                                class="produkt-bild"
-                                src="kakao-schuss.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Kakao mit Schuss</span>
-                                <span class="preis">4,00 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Kakao-Schuss"
-                            class="minus-button"
-                            onclick="entfernen('Kakao-Schuss')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
-
-                    <!-- KINDERPUNSCH -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Kinderpunsch')">
-                            <img
-                                class="produkt-bild"
-                                src="kinderpunsch.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Kinderpunsch</span>
-                                <span class="preis">2,00 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Kinderpunsch"
-                            class="minus-button"
-                            onclick="entfernen('Kinderpunsch')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
-
-                    <!-- PFANDRÜCKGABE -->
-                    <div class="produkt-container">
-                        <button type="button" class="produkt" onclick="Hinzufuegen('Pfandrückgabe')">
-                            <img
-                                class="produkt-bild"
-                                src="pfand.png"
-                                alt=""
-                                width="240"
-                                height="240"
-                                loading="eager"
-                                decoding="async"
-                            />
-                            <span class="produkt-inhalt">
-                                <span class="produkt-name">Pfandrückgabe</span>
-                                <span class="preis">-2,00 €</span>
-                            </span>
-                        </button>
-                        <button
-                            type="button"
-                            id="minus-Pfandrückgabe"
-                            class="minus-button"
-                            onclick="entfernen('Pfandrückgabe')"
-                            style="display: none"
-                        >
-                            − 0
-                        </button>
-                    </div>
+                <!-- GLÜHWEIN MIT SCHUSS -->
+                <div class="produkt-container">
+                    <button
+                        type="button"
+                        id="card-gluehwein-schuss"
+                        class="produkt"
+                        onclick="hinzufuegen('gluehwein-schuss')"
+                    >
+                        <span id="badge-gluehwein-schuss" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="gluehwein-schuss.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Glühwein mit Schuss
+                            <span class="preis">4,00 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-gluehwein-schuss"
+                        class="minus-button"
+                        onclick="entfernen('gluehwein-schuss')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
                 </div>
-            </section>
 
-            <aside class="warenkorb" aria-label="Bon">
-                <div class="warenkorb-kopf">
-                    <h2>Aktueller Bon</h2>
-                    <span class="section-sub">EUR</span>
+                <!-- KAKAO -->
+                <div class="produkt-container">
+                    <button type="button" id="card-kakao" class="produkt" onclick="hinzufuegen('kakao')">
+                        <span id="badge-kakao" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="kakao.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Kakao
+                            <span class="preis">2,50 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-kakao"
+                        class="minus-button"
+                        onclick="entfernen('kakao')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
                 </div>
-                <div id="warenkorb">
-                    <p class="leer">Keine Positionen erfasst.</p>
+
+                <!-- KAKAO MIT SCHUSS -->
+                <div class="produkt-container">
+                    <button type="button" id="card-kakao-schuss" class="produkt" onclick="hinzufuegen('kakao-schuss')">
+                        <span id="badge-kakao-schuss" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="kakao-schuss.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Kakao mit Schuss
+                            <span class="preis">4,00 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-kakao-schuss"
+                        class="minus-button"
+                        onclick="entfernen('kakao-schuss')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
                 </div>
-                <div class="gesamt" id="gesamt">
-                    <span>Gesamt</span>
-                    <span>0,00 €</span>
+
+                <!-- KINDERPUNSCH -->
+                <div class="produkt-container">
+                    <button type="button" id="card-kinderpunsch" class="produkt" onclick="hinzufuegen('kinderpunsch')">
+                        <span id="badge-kinderpunsch" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="kinderpunsch.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Kinderpunsch
+                            <span class="preis">2,00 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-kinderpunsch"
+                        class="minus-button"
+                        onclick="entfernen('kinderpunsch')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
                 </div>
+
+                <!-- PFANDRÜCKGABE -->
+                <div class="produkt-container">
+                    <button
+                        type="button"
+                        id="card-pfandrueckgabe"
+                        class="produkt"
+                        onclick="hinzufuegen('pfandrueckgabe')"
+                    >
+                        <span id="badge-pfandrueckgabe" class="anzahl-badge">0×</span>
+                        <img
+                            class="produkt-bild"
+                            src="pfand.png"
+                            alt=""
+                            width="240"
+                            height="240"
+                            loading="eager"
+                            decoding="async"
+                        />
+                        <span class="produkt-inhalt">
+                            Pfandrückgabe
+                            <span class="preis">-2,00 €</span>
+                        </span>
+                    </button>
+                    <button
+                        type="button"
+                        id="minus-pfandrueckgabe"
+                        class="minus-button"
+                        onclick="entfernen('pfandrueckgabe')"
+                        style="display: none"
+                    >
+                        - 0
+                    </button>
+                </div>
+            </div>
+
+            <!-- WARENKORB -->
+            <div class="warenkorb">
+                <h2>Bestellung</h2>
+                <div id="warenkorb-liste">
+                    <p class="leer">Keine Bestellungen aufgenommen.</p>
+                </div>
+                <div class="gesamt" id="gesamt">Gesamt: 0,00 €</div>
                 <div class="aktions-buttons">
-                    <button type="button" id="loeschen-button" class="loeschen" onclick="loeschen()" disabled>
-                        Verwerfen
+                    <button type="button" id="loeschen-button" class="loeschen" onclick="loeschenAnfordern()" disabled>
+                        Bestellung löschen
                     </button>
                     <button type="button" id="bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>
-                        Kassieren
+                        Bezahlen
                     </button>
                 </div>
-            </aside>
-        </main>
-
-        <div class="mobile-warenkorb" aria-label="Schnellkasse">
-            <div class="gesamt mobile-gesamt" id="mobile-gesamt">
-                <span>Gesamt</span>
-                <span>0,00 €</span>
             </div>
+        </div>
+
+        <!-- MOBILE WARENKORB LEISTE -->
+        <div class="mobile-warenkorb" aria-label="Warenkorb und Kasse">
+            <div class="gesamt mobile-gesamt" id="mobile-gesamt">Gesamt: 0,00 €</div>
             <div class="mobile-aktions-buttons">
-                <button type="button" id="mobile-loeschen-button" class="loeschen" onclick="loeschen()" disabled>
-                    Verwerfen
+                <button
+                    type="button"
+                    id="mobile-loeschen-button"
+                    class="loeschen"
+                    onclick="loeschenAnfordern()"
+                    disabled
+                >
+                    Bestellung löschen
                 </button>
                 <button type="button" id="mobile-bezahlen-button" class="bezahlen" onclick="bezahlen()" disabled>
-                    Kassieren
+                    Bezahlen
                 </button>
             </div>
         </div>
@@ -932,7 +1111,7 @@
         <div id="bezahl-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-titel">
             <div class="modal-box">
                 <div class="modal-header">
-                    <h3 id="modal-titel">Barzahlung</h3>
+                    <h3 id="modal-titel">Barzahlung &amp; Rückgeld</h3>
                     <button type="button" class="modal-close" onclick="schliesseBezahlModal()" aria-label="Schließen">
                         &times;
                     </button>
@@ -946,7 +1125,7 @@
 
                     <div id="bar-eingabe-bereich">
                         <div class="eingabe-gruppe">
-                            <label class="eingabe-label" for="gegeben-input">Gegeben</label>
+                            <label class="eingabe-label" for="gegeben-input">Gegebener Betrag</label>
                             <div class="eingabe-zeile">
                                 <div class="gegeben-input-wrapper">
                                     <input
@@ -970,12 +1149,12 @@
                             </div>
                         </div>
 
-                        <div class="schnell-betraege">
+                        <div class="schnell-betraege" id="schnell-betraege-container">
                             <button type="button" class="schnell-btn passend" onclick="setzePassend()">Passend</button>
-                            <button type="button" class="schnell-btn" onclick="addiereBetrag(5)">+ 5 €</button>
-                            <button type="button" class="schnell-btn" onclick="addiereBetrag(10)">+ 10 €</button>
-                            <button type="button" class="schnell-btn" onclick="addiereBetrag(20)">+ 20 €</button>
-                            <button type="button" class="schnell-btn" onclick="addiereBetrag(50)">+ 50 €</button>
+                            <button type="button" class="schnell-btn" onclick="addiereBetrag(5)">+5 €</button>
+                            <button type="button" class="schnell-btn" onclick="addiereBetrag(10)">+10 €</button>
+                            <button type="button" class="schnell-btn" onclick="addiereBetrag(20)">+20 €</button>
+                            <button type="button" class="schnell-btn" onclick="addiereBetrag(50)">+50 €</button>
                         </div>
                     </div>
 
@@ -1002,74 +1181,202 @@
             </div>
         </div>
 
-        <footer class="footer">
-            AVANTI MINISTRARE • Messdiener Lembeck • 2026
+        <!-- LÖSCHEN-BESTÄTIGUNGS-OVERLAY (OHNE CONFIRM()) -->
+        <div
+            id="loeschen-modal"
+            class="modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="loeschen-modal-titel"
+        >
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 id="loeschen-modal-titel">Bestellung löschen?</h3>
+                    <button type="button" class="modal-close" onclick="schliesseLoeschenModal()" aria-label="Schließen">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="confirm-text">Möchtest du die aktuelle Bestellung wirklich komplett verwerfen?</p>
+                    <div class="modal-aktionen">
+                        <button type="button" class="modal-abbrechen" onclick="schliesseLoeschenModal()">
+                            Behalten
+                        </button>
+                        <button
+                            type="button"
+                            id="loeschen-bestaetigen-btn"
+                            class="modal-loeschen-bestaetigen"
+                            onclick="loeschenBestaetigt()"
+                        >
+                            Ja, löschen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- LOKALES JOURNAL OVERLAY -->
+        <div
+            id="journal-modal"
+            class="modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="journal-modal-titel"
+        >
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 id="journal-modal-titel">Verlauf (dieses Gerät)</h3>
+                    <button type="button" class="modal-close" onclick="schliesseJournalModal()" aria-label="Schließen">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="journal-hinweis">
+                        Lokale Übersicht nur für dieses Smartphone/Tablet (kein geräteübergreifender Kassensturz).
+                    </div>
+
+                    <div class="journal-stats">
+                        <div class="stat-karte">
+                            <span class="stat-label">Abgeschlossen</span>
+                            <span class="stat-wert" id="journal-stat-anzahl">0</span>
+                        </div>
+                        <div class="stat-karte">
+                            <span class="stat-label">Summe (inkl. Pfand)</span>
+                            <span class="stat-wert" id="journal-stat-umsatz">0,00 €</span>
+                        </div>
+                    </div>
+
+                    <div class="journal-abschnitt-titel">Verkaufte Artikel</div>
+                    <div class="journal-liste" id="journal-artikel-statistik"></div>
+
+                    <div class="journal-abschnitt-titel">Letzte Buchungen</div>
+                    <div class="journal-liste" id="journal-buchungen-liste"></div>
+
+                    <div class="modal-aktionen">
+                        <button type="button" class="modal-abbrechen" onclick="journalLeeren()">Verlauf leeren</button>
+                        <button type="button" class="modal-abschliessen" onclick="schliesseJournalModal()">
+                            Schließen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer" style="margin-top: 50px">
+            <div class="footer-brand">
+                <span class="footer-titel">AVANTI MINISTRARE &copy;</span>
+            </div>
+            <div class="footer-credits">
+                Entwickelt von Marcel H. <br />
+                Messdiener Lembeck - 2026
+            </div>
         </footer>
 
         <script>
-            const produktPreise = {
-                Glühwein: 3.5,
-                "Glühwein-Schuss": 4.0,
-                Kakao: 2.5,
-                "Kakao-Schuss": 4.0,
-                Kinderpunsch: 2.0,
-                Pfandrückgabe: -2.0,
+            // KONSTANTEN STATT MAGISCHER ZAHLEN
+            const CONFIG = {
+                PFAND_BETRAG: 2.0,
+                SCHNELL_SCHEINE: [5, 10, 20, 50],
+                KLICK_SCHUTZ_MS: 110,
+                FLASH_DAUER_MS: 180,
+                STORAGE_KEY_JOURNAL: "avanti_ministrare_pos_journal_v1",
+                MAX_JOURNAL_EINTRAEGE: 250,
             };
+
+            const PRODUKTE = {
+                gluehwein: { name: "Glühwein", preis: 3.5, istPfandRueckgabe: false },
+                "gluehwein-schuss": { name: "Glühwein-Schuss", preis: 4.0, istPfandRueckgabe: false },
+                kakao: { name: "Kakao", preis: 2.5, istPfandRueckgabe: false },
+                "kakao-schuss": { name: "Kakao-Schuss", preis: 4.0, istPfandRueckgabe: false },
+                kinderpunsch: { name: "Kinderpunsch", preis: 2.0, istPfandRueckgabe: false },
+                pfandrueckgabe: { name: "Pfandrückgabe", preis: -2.0, istPfandRueckgabe: true },
+            };
+
             let bestellungen = {};
             let aktuellerGesamtbetrag = 0;
             let gegebenerBetrag = 0;
-            const pfand = 2.0;
+            let letzterKlickZeitpunkt = {};
 
             function formatiereEuro(betrag) {
                 return betrag.toFixed(2).replace(".", ",") + " €";
             }
 
-            function setzeGesamtAnzeige(betrag) {
-                const formatiert = formatiereEuro(betrag);
-                const desktopGesamt = document.getElementById("gesamt");
-                const mobileGesamt = document.getElementById("mobile-gesamt");
-
-                if (desktopGesamt) {
-                    desktopGesamt.innerHTML = `<span>Gesamt</span><span>${formatiert}</span>`;
-                }
-                if (mobileGesamt) {
-                    mobileGesamt.innerHTML = `<span>Gesamt</span><span>${formatiert}</span>`;
-                }
+            function rundeCent(wert) {
+                return Math.round(wert * 100) / 100;
             }
 
-            function Hinzufuegen(id) {
-                if (!bestellungen[id]) {
-                    bestellungen[id] = 0;
-                }
-                bestellungen[id]++;
-                aktualisiereWarenkorb();
+            function istTouchGeraet() {
+                return window.matchMedia("(pointer: coarse)").matches;
             }
 
-            function entfernen(id) {
-                if (!bestellungen[id]) {
+            function loeseKlickFeedbackAus(produktId) {
+                const karte = document.getElementById(`card-${produktId}`);
+                if (!karte) {
                     return;
                 }
-                bestellungen[id]--;
-                if (bestellungen[id] === 0) {
-                    delete bestellungen[id];
+                karte.classList.add("klick-flash");
+                window.setTimeout(() => {
+                    karte.classList.remove("klick-flash");
+                }, CONFIG.FLASH_DAUER_MS);
+            }
+
+            function hinzufuegen(produktId) {
+                if (!PRODUKTE[produktId]) {
+                    return;
+                }
+
+                // Schnell-Klick-Schutz gegen versehentliche Doppel-Touches
+                const jetzt = Date.now();
+                const letzterKlick = letzterKlickZeitpunkt[produktId] || 0;
+                if (jetzt - letzterKlick < CONFIG.KLICK_SCHUTZ_MS) {
+                    return;
+                }
+                letzterKlickZeitpunkt[produktId] = jetzt;
+
+                if (!bestellungen[produktId]) {
+                    bestellungen[produktId] = 0;
+                }
+                bestellungen[produktId]++;
+                loeseKlickFeedbackAus(produktId);
+                aktualisiereWarenkorb();
+            }
+
+            function entfernen(produktId) {
+                if (!bestellungen[produktId]) {
+                    return;
+                }
+                bestellungen[produktId]--;
+                if (bestellungen[produktId] === 0) {
+                    delete bestellungen[produktId];
                 }
                 aktualisiereWarenkorb();
             }
 
-            function loeschen() {
+            function loeschenAnfordern() {
                 if (Object.keys(bestellungen).length === 0) {
                     return;
                 }
-                const bestaetigt = confirm("Möchtest du die Bestellung wirklich löschen?");
-                if (!bestaetigt) {
-                    return;
+                const modal = document.getElementById("loeschen-modal");
+                modal.classList.add("aktiv");
+                const bestaetigenBtn = document.getElementById("loeschen-bestaetigen-btn");
+                if (bestaetigenBtn && !istTouchGeraet()) {
+                    bestaetigenBtn.focus();
                 }
+            }
+
+            function schliesseLoeschenModal() {
+                document.getElementById("loeschen-modal").classList.remove("aktiv");
+            }
+
+            function loeschenBestaetigt() {
                 bestellungen = {};
                 aktualisiereWarenkorb();
+                schliesseLoeschenModal();
             }
 
             function aktualisiereWarenkorb() {
-                const warenkorb = document.getElementById("warenkorb");
+                const warenkorbListe = document.getElementById("warenkorb-liste");
+                const gesamtAnzeigen = document.querySelectorAll(".gesamt");
                 const loeschenButtons = document.querySelectorAll(".loeschen");
                 const bezahlenButtons = document.querySelectorAll(".bezahlen");
 
@@ -1077,64 +1384,78 @@
                 loeschenButtons.forEach((button) => (button.disabled = !hatBestellungen));
                 bezahlenButtons.forEach((button) => (button.disabled = !hatBestellungen));
 
-                warenkorb.innerHTML = "";
+                warenkorbListe.innerHTML = "";
                 let getraenkeGesamt = 0;
-                let anzahlGetraenke = 0;
+                let anzahlPfandGetraenke = 0;
 
-                for (const id in bestellungen) {
-                    const anzahl = bestellungen[id];
-                    const einzelpreis = produktPreise[id];
-                    const produktGesamt = einzelpreis * anzahl;
+                for (const produktId of Object.keys(PRODUKTE)) {
+                    const anzahl = bestellungen[produktId] || 0;
+                    const produkt = PRODUKTE[produktId];
+                    const minusButton = document.getElementById(`minus-${produktId}`);
+                    const badge = document.getElementById(`badge-${produktId}`);
+                    const karte = document.getElementById(`card-${produktId}`);
 
-                    getraenkeGesamt += produktGesamt;
-                    if (id !== "Pfandrückgabe") {
-                        anzahlGetraenke += anzahl;
-                    }
+                    if (anzahl > 0) {
+                        const produktGesamt = rundeCent(produkt.preis * anzahl);
+                        getraenkeGesamt = rundeCent(getraenkeGesamt + produktGesamt);
 
-                    const zeile = document.createElement("div");
-                    zeile.className = "warenkorb-zeile";
-                    zeile.innerHTML = `
-                        <span class="warenkorb-produkt">${id} × ${anzahl}</span>
-                        <span class="warenkorb-preis">${formatiereEuro(produktGesamt)}</span>
-                    `;
-                    warenkorb.appendChild(zeile);
+                        if (!produkt.istPfandRueckgabe) {
+                            anzahlPfandGetraenke += anzahl;
+                        }
 
-                    const minusButton = document.getElementById(`minus-${id}`);
-                    if (minusButton) {
-                        minusButton.style.display = "block";
-                        minusButton.innerText = "− " + anzahl;
-                    }
-                }
+                        const zeile = document.createElement("div");
+                        zeile.className = "warenkorb-zeile";
+                        zeile.innerHTML = `
+                            <span class="warenkorb-produkt">${produkt.name} × ${anzahl}</span>
+                            <span class="warenkorb-preis">${formatiereEuro(produktGesamt)}</span>
+                        `;
+                        warenkorbListe.appendChild(zeile);
 
-                for (const id in produktPreise) {
-                    if (!bestellungen[id]) {
-                        const minusButton = document.getElementById(`minus-${id}`);
+                        if (minusButton) {
+                            minusButton.style.display = "block";
+                            minusButton.innerText = "- " + anzahl;
+                        }
+                        if (badge) {
+                            badge.innerText = anzahl + "×";
+                            badge.classList.add("sichtbar");
+                        }
+                        if (karte) {
+                            karte.classList.add("hat-anzahl");
+                        }
+                    } else {
                         if (minusButton) {
                             minusButton.style.display = "none";
+                        }
+                        if (badge) {
+                            badge.classList.remove("sichtbar");
+                        }
+                        if (karte) {
+                            karte.classList.remove("hat-anzahl");
                         }
                     }
                 }
 
                 if (!hatBestellungen) {
                     aktuellerGesamtbetrag = 0;
-                    warenkorb.innerHTML = "<p class='leer'>Keine Positionen erfasst.</p>";
-                    setzeGesamtAnzeige(0);
+                    warenkorbListe.innerHTML = "<p class='leer'>Keine Bestellungen aufgenommen.</p>";
+                    gesamtAnzeigen.forEach((anzeige) => (anzeige.innerText = "Gesamt: 0,00 €"));
                     return;
                 }
 
-                const pfandGesamt = anzahlGetraenke * pfand;
-                if (anzahlGetraenke > 0) {
+                const pfandGesamt = rundeCent(anzahlPfandGetraenke * CONFIG.PFAND_BETRAG);
+                if (anzahlPfandGetraenke > 0) {
                     const pfandZeile = document.createElement("div");
                     pfandZeile.className = "warenkorb-zeile";
                     pfandZeile.innerHTML = `
-                        <span class="warenkorb-produkt">Pfand × ${anzahlGetraenke}</span>
+                        <span class="warenkorb-produkt">Pfand × ${anzahlPfandGetraenke}</span>
                         <span class="warenkorb-preis">${formatiereEuro(pfandGesamt)}</span>
                     `;
-                    warenkorb.appendChild(pfandZeile);
+                    warenkorbListe.appendChild(pfandZeile);
                 }
 
-                aktuellerGesamtbetrag = Math.round((getraenkeGesamt + pfandGesamt) * 100) / 100;
-                setzeGesamtAnzeige(aktuellerGesamtbetrag);
+                aktuellerGesamtbetrag = rundeCent(getraenkeGesamt + pfandGesamt);
+                const gesamtText = `Gesamt: ${formatiereEuro(aktuellerGesamtbetrag)}`;
+                gesamtAnzeigen.forEach((anzeige) => (anzeige.innerText = gesamtText));
             }
 
             function bezahlen() {
@@ -1159,6 +1480,14 @@
 
                 setzeGegeben(0);
                 modal.classList.add("aktiv");
+
+                // Fokus auf Desktop sofort ins Eingabefeld setzen; auf Touch-Geräten Tastatur nicht ungefragt aufklappen
+                if (aktuellerGesamtbetrag >= 0 && !istTouchGeraet()) {
+                    const input = document.getElementById("gegeben-input");
+                    input.focus();
+                } else if (aktuellerGesamtbetrag < 0) {
+                    document.getElementById("modal-abschliessen-btn").focus();
+                }
             }
 
             function schliesseBezahlModal() {
@@ -1166,7 +1495,7 @@
             }
 
             function setzeGegeben(wert) {
-                gegebenerBetrag = Math.max(0, Math.round(wert * 100) / 100);
+                gegebenerBetrag = Math.max(0, rundeCent(wert));
                 const input = document.getElementById("gegeben-input");
                 input.value = gegebenerBetrag > 0 ? gegebenerBetrag.toFixed(2).replace(".", ",") : "";
                 berechneRueckgeld();
@@ -1184,7 +1513,7 @@
                 const input = document.getElementById("gegeben-input");
                 const bereinigt = input.value.replace(",", ".").replace(/[^0-9.]/g, "");
                 const zahl = parseFloat(bereinigt);
-                gegebenerBetrag = isNaN(zahl) ? 0 : Math.round(zahl * 100) / 100;
+                gegebenerBetrag = isNaN(zahl) ? 0 : rundeCent(zahl);
                 berechneRueckgeld();
             }
 
@@ -1205,7 +1534,7 @@
                     return;
                 }
 
-                const differenz = Math.round((gegebenerBetrag - aktuellerGesamtbetrag) * 100) / 100;
+                const differenz = rundeCent(gegebenerBetrag - aktuellerGesamtbetrag);
 
                 if (gegebenerBetrag === 0) {
                     titel.innerText = "Rückgeld";
@@ -1224,17 +1553,192 @@
                 }
             }
 
+            // LOKALES JOURNAL (LOCALSTORAGE)
+            function ladeJournal() {
+                try {
+                    const roh = localStorage.getItem(CONFIG.STORAGE_KEY_JOURNAL);
+                    const daten = roh ? JSON.parse(roh) : [];
+                    return Array.isArray(daten) ? daten : [];
+                } catch (e) {
+                    return [];
+                }
+            }
+
+            function speichereJournal(eintraege) {
+                try {
+                    localStorage.setItem(
+                        CONFIG.STORAGE_KEY_JOURNAL,
+                        JSON.stringify(eintraege.slice(0, CONFIG.MAX_JOURNAL_EINTRAEGE))
+                    );
+                } catch (e) {
+                    // Ignorieren, falls Speicher voll oder blockiert
+                }
+                aktualisiereJournalBadge();
+            }
+
+            function bucheImJournal() {
+                const positionen = {};
+                let anzahlPfand = 0;
+
+                for (const produktId of Object.keys(bestellungen)) {
+                    const anzahl = bestellungen[produktId];
+                    if (anzahl > 0 && PRODUKTE[produktId]) {
+                        positionen[produktId] = anzahl;
+                        if (!PRODUKTE[produktId].istPfandRueckgabe) {
+                            anzahlPfand += anzahl;
+                        }
+                    }
+                }
+
+                const rueckgeld =
+                    aktuellerGesamtbetrag <= 0
+                        ? Math.abs(aktuellerGesamtbetrag)
+                        : rundeCent(gegebenerBetrag - aktuellerGesamtbetrag);
+
+                const eintrag = {
+                    zeitpunkt: new Date().toISOString(),
+                    positionen: positionen,
+                    pfandAnzahl: anzahlPfand,
+                    gesamt: aktuellerGesamtbetrag,
+                    gegeben: aktuellerGesamtbetrag <= 0 ? 0 : gegebenerBetrag,
+                    rueckgeld: rueckgeld,
+                };
+
+                const journal = ladeJournal();
+                journal.unshift(eintrag);
+                speichereJournal(journal);
+            }
+
+            function aktualisiereJournalBadge() {
+                const badge = document.getElementById("journal-anzahl-badge");
+                if (badge) {
+                    badge.innerText = ladeJournal().length;
+                }
+            }
+
+            function oeffneJournalModal() {
+                const journal = ladeJournal();
+                const anzahlEl = document.getElementById("journal-stat-anzahl");
+                const umsatzEl = document.getElementById("journal-stat-umsatz");
+                const artikelEl = document.getElementById("journal-artikel-statistik");
+                const buchungenEl = document.getElementById("journal-buchungen-liste");
+
+                let gesamtUmsatz = 0;
+                const artikelSummen = {};
+
+                journal.forEach((eintrag) => {
+                    gesamtUmsatz = rundeCent(gesamtUmsatz + (eintrag.gesamt || 0));
+                    if (eintrag.positionen) {
+                        for (const pid of Object.keys(eintrag.positionen)) {
+                            artikelSummen[pid] = (artikelSummen[pid] || 0) + eintrag.positionen[pid];
+                        }
+                    }
+                });
+
+                anzahlEl.innerText = journal.length;
+                umsatzEl.innerText = formatiereEuro(gesamtUmsatz);
+
+                // Artikel-Übersicht
+                artikelEl.innerHTML = "";
+                const bekannteIds = Object.keys(PRODUKTE).filter((pid) => artikelSummen[pid] > 0);
+                if (bekannteIds.length === 0) {
+                    artikelEl.innerHTML = "<p class='leer'>Noch keine Artikel gebucht.</p>";
+                } else {
+                    bekannteIds.forEach((pid) => {
+                        const zeile = document.createElement("div");
+                        zeile.className = "journal-eintrag";
+                        zeile.innerHTML = `
+                            <div class="journal-eintrag-kopf">
+                                <span>${PRODUKTE[pid].name}</span>
+                                <span>${artikelSummen[pid]}×</span>
+                            </div>
+                        `;
+                        artikelEl.appendChild(zeile);
+                    });
+                }
+
+                // Einzelbuchungen
+                buchungenEl.innerHTML = "";
+                if (journal.length === 0) {
+                    buchungenEl.innerHTML = "<p class='leer'>Noch keine Buchungen vorhanden.</p>";
+                } else {
+                    journal.forEach((eintrag) => {
+                        const zeit = new Date(eintrag.zeitpunkt).toLocaleTimeString("de-DE", {
+                            hour: "2-digit",
+                            minute: "2-digit",
+                        });
+                        const teile = [];
+                        if (eintrag.positionen) {
+                            for (const pid of Object.keys(eintrag.positionen)) {
+                                const name = PRODUKTE[pid] ? PRODUKTE[pid].name : pid;
+                                teile.push(`${eintrag.positionen[pid]}× ${name}`);
+                            }
+                        }
+                        const zeile = document.createElement("div");
+                        zeile.className = "journal-eintrag";
+                        zeile.innerHTML = `
+                            <div class="journal-eintrag-kopf">
+                                <span>${zeit} Uhr</span>
+                                <span>${formatiereEuro(eintrag.gesamt)}</span>
+                            </div>
+                            <div class="journal-eintrag-details">${teile.join(", ")}</div>
+                        `;
+                        buchungenEl.appendChild(zeile);
+                    });
+                }
+
+                document.getElementById("journal-modal").classList.add("aktiv");
+            }
+
+            function schliesseJournalModal() {
+                document.getElementById("journal-modal").classList.remove("aktiv");
+            }
+
+            function journalLeeren() {
+                speichereJournal([]);
+                oeffneJournalModal();
+            }
+
             function bestellungAbschliessen() {
+                bucheImJournal();
                 bestellungen = {};
                 aktualisiereWarenkorb();
                 schliesseBezahlModal();
             }
 
+            // TASTATURSTEUERUNG (ESCAPE & ENTER)
             document.addEventListener("keydown", function (event) {
+                const bezahlAktiv = document.getElementById("bezahl-modal").classList.contains("aktiv");
+                const loeschenAktiv = document.getElementById("loeschen-modal").classList.contains("aktiv");
+                const journalAktiv = document.getElementById("journal-modal").classList.contains("aktiv");
+
                 if (event.key === "Escape") {
-                    schliesseBezahlModal();
+                    if (bezahlAktiv) schliesseBezahlModal();
+                    if (loeschenAktiv) schliesseLoeschenModal();
+                    if (journalAktiv) schliesseJournalModal();
+                    return;
+                }
+
+                if (event.key === "Enter" && bezahlAktiv) {
+                    const abschliessenBtn = document.getElementById("modal-abschliessen-btn");
+                    if (!abschliessenBtn.disabled) {
+                        event.preventDefault();
+                        bestellungAbschliessen();
+                    }
                 }
             });
+
+            // SERVICE WORKER FÜR OFFLINE-BETRIEB REGISTRIEREN
+            if ("serviceWorker" in navigator) {
+                window.addEventListener("load", function () {
+                    navigator.serviceWorker.register("./sw.js").catch(function () {
+                        // Offline-Cache optional, falls lokal per file:// geöffnet
+                    });
+                });
+            }
+
+            // INITIALISIERUNG
+            aktualisiereJournalBadge();
         </script>
     </body>
 </html>
