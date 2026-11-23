@@ -1,4 +1,4 @@
-const CACHE_NAME = "avanti-ministrare-pos-v1";
+const CACHE_NAME = "avanti-ministrare-pos-v2";
 const ASSETS = [
     "./",
     "./index.html",
