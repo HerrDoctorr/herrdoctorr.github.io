@@ -42,7 +42,7 @@
 
             body {
                 margin: 0;
-                padding: 0 0 144px 0;
+                padding: 0 0 156px 0;
                 font-family: "Inter", sans-serif;
                 background-color: var(--surface-app);
                 color: var(--ink-primary);
@@ -127,7 +127,7 @@
             .section-title {
                 margin: 0;
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 14px;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
@@ -139,101 +139,86 @@
                 color: var(--ink-muted);
             }
 
-            /* PRODUKT-LISTE (SMARTPHONE: KOMPAKTE KARTEN) */
+            /* PRODUKT-KACHELN (2 SPALTEN, GROSSE TOUCH-FLÄCHEN) */
             .produkte {
                 display: grid;
-                grid-template-columns: 1fr;
-                gap: 8px;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
             }
 
             .produkt-container {
-                display: grid;
-                grid-template-columns: 1fr auto;
+                display: flex;
+                flex-direction: column;
                 gap: 6px;
-                align-items: stretch;
             }
 
             .produkt {
                 width: 100%;
+                min-height: 148px;
                 background-color: var(--surface-card);
-                border: 1px solid var(--line-subtle);
-                border-radius: 10px;
-                padding: 10px 14px;
+                border: 1.5px solid var(--line-subtle);
+                border-radius: 12px;
+                padding: 14px 10px;
                 display: flex;
+                flex-direction: column;
                 align-items: center;
-                justify-content: space-between;
-                gap: 12px;
-                text-align: left;
+                justify-content: center;
+                text-align: center;
                 cursor: pointer;
                 transition: border-color 0.12s ease, background-color 0.12s ease, transform 0.06s ease;
             }
 
             .produkt:hover {
-                border-color: var(--line-strong);
+                border-color: var(--accent-brand);
                 background-color: #fafbfd;
             }
 
             .produkt:active {
-                transform: scale(0.99);
+                transform: scale(0.98);
                 background-color: var(--surface-muted);
             }
 
-            .produkt-links {
-                display: flex;
-                align-items: center;
-                gap: 12px;
-                min-width: 0;
-            }
-
             .produkt-bild {
-                width: 44px;
-                height: 44px;
+                width: 60px;
+                height: 60px;
                 object-fit: contain;
-                background-color: var(--surface-app);
-                border-radius: 8px;
-                padding: 4px;
-                flex-shrink: 0;
+                margin-bottom: 8px;
                 pointer-events: none;
             }
 
             .produkt-inhalt {
                 display: flex;
                 flex-direction: column;
-                gap: 2px;
-                min-width: 0;
+                align-items: center;
+                gap: 5px;
             }
 
             .produkt-name {
                 font-family: "Plus Jakarta Sans", sans-serif;
                 font-size: 16px;
                 font-weight: 700;
+                line-height: 1.2;
                 color: var(--ink-primary);
-            }
-
-            .produkt-pfandhinweis {
-                font-size: 11px;
-                color: var(--ink-muted);
             }
 
             .preis {
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 16px;
+                font-size: 14px;
                 font-weight: 700;
-                color: var(--ink-primary);
+                color: var(--ink-secondary);
                 background-color: var(--surface-muted);
-                padding: 6px 10px;
-                border-radius: 7px;
-                white-space: nowrap;
+                padding: 3px 10px;
+                border-radius: 6px;
             }
 
             .minus-button {
-                min-width: 64px;
-                padding: 0 12px;
+                width: 100%;
+                padding: 10px 8px;
                 background-color: var(--surface-card);
-                border: 1px solid #fecaca;
+                border: 1.5px solid #fecaca;
                 border-radius: 10px;
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 font-weight: 700;
                 color: var(--accent-danger);
                 cursor: pointer;
@@ -246,16 +231,16 @@
             }
 
             .minus-button:active {
-                transform: scale(0.97);
+                transform: scale(0.98);
             }
 
             /* BON / WARENKORB */
             .warenkorb {
-                margin-top: 18px;
+                margin-top: 20px;
                 background-color: var(--surface-card);
-                border: 1px solid var(--line-subtle);
-                border-radius: 10px;
-                padding: 14px 16px;
+                border: 1.5px solid var(--line-subtle);
+                border-radius: 12px;
+                padding: 16px;
             }
 
             .warenkorb-kopf {
@@ -269,7 +254,7 @@
             .warenkorb-kopf h2 {
                 margin: 0;
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 14px;
                 font-weight: 700;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
@@ -280,7 +265,7 @@
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 9px 0;
+                padding: 10px 0;
                 border-bottom: 1px solid var(--surface-muted);
                 font-size: 15px;
             }
@@ -310,12 +295,12 @@
             .gesamt {
                 margin-top: 12px;
                 padding-top: 12px;
-                border-top: 1px solid var(--line-strong);
+                border-top: 1.5px solid var(--line-strong);
                 display: flex;
                 justify-content: space-between;
                 align-items: baseline;
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 22px;
+                font-size: 23px;
                 font-weight: 800;
                 color: var(--ink-primary);
             }
@@ -323,17 +308,17 @@
             .aktions-buttons {
                 display: grid;
                 grid-template-columns: 1fr 1.6fr;
-                gap: 8px;
+                gap: 10px;
                 margin-top: 14px;
             }
 
             .loeschen,
             .bezahlen {
                 width: 100%;
-                padding: 13px 12px;
-                border-radius: 8px;
+                padding: 15px 12px;
+                border-radius: 10px;
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 font-weight: 700;
                 cursor: pointer;
                 transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
@@ -341,7 +326,7 @@
 
             .loeschen {
                 background-color: var(--surface-card);
-                border: 1px solid var(--line-strong);
+                border: 1.5px solid var(--line-strong);
                 color: var(--ink-secondary);
             }
 
@@ -353,7 +338,7 @@
 
             .bezahlen {
                 background-color: var(--accent-action);
-                border: 1px solid var(--accent-action);
+                border: 1.5px solid var(--accent-action);
                 color: #ffffff;
             }
 
@@ -382,23 +367,23 @@
                 bottom: 0;
                 z-index: 25;
                 background-color: var(--surface-card);
-                border-top: 1px solid var(--line-strong);
-                padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+                border-top: 1.5px solid var(--line-strong);
+                padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
                 display: grid;
-                gap: 8px;
+                gap: 10px;
             }
 
             .mobile-gesamt {
                 margin: 0;
                 padding: 0;
                 border: none;
-                font-size: 20px;
+                font-size: 22px;
             }
 
             .mobile-aktions-buttons {
                 display: grid;
                 grid-template-columns: 1fr 1.6fr;
-                gap: 8px;
+                gap: 10px;
             }
 
             /* FOOTER */
@@ -437,7 +422,7 @@
             .modal-header {
                 background-color: var(--accent-brand);
                 color: #ffffff;
-                padding: 13px 16px;
+                padding: 14px 16px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -451,8 +436,8 @@
             }
 
             .modal-close {
-                width: 30px;
-                height: 30px;
+                width: 32px;
+                height: 32px;
                 border-radius: 6px;
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 background-color: rgba(255, 255, 255, 0.08);
@@ -472,7 +457,7 @@
                 background-color: var(--surface-app);
                 border: 1px solid var(--line-subtle);
                 border-radius: 8px;
-                padding: 11px 14px;
+                padding: 12px 14px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
@@ -518,8 +503,8 @@
 
             .gegeben-input {
                 width: 100%;
-                padding: 11px 32px 11px 12px;
-                border: 1px solid var(--line-strong);
+                padding: 12px 32px 12px 12px;
+                border: 1.5px solid var(--line-strong);
                 border-radius: 8px;
                 font-family: "Plus Jakarta Sans", sans-serif;
                 font-size: 21px;
@@ -545,12 +530,12 @@
             }
 
             .clear-input-btn {
-                padding: 0 14px;
-                border: 1px solid var(--line-strong);
+                padding: 0 16px;
+                border: 1.5px solid var(--line-strong);
                 border-radius: 8px;
                 background-color: var(--surface-muted);
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 font-weight: 700;
                 color: var(--ink-primary);
                 cursor: pointer;
@@ -559,17 +544,17 @@
             .schnell-betraege {
                 display: grid;
                 grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
+                gap: 8px;
                 margin-bottom: 14px;
             }
 
             .schnell-btn {
-                padding: 10px 8px;
-                border: 1px solid var(--line-subtle);
+                padding: 12px 8px;
+                border: 1.5px solid var(--line-subtle);
                 border-radius: 8px;
                 background-color: var(--surface-card);
                 font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 15px;
+                font-size: 16px;
                 font-weight: 700;
                 color: var(--ink-primary);
                 cursor: pointer;
@@ -593,7 +578,7 @@
                 text-align: center;
                 margin-bottom: 14px;
                 background-color: var(--surface-app);
-                border: 1px solid var(--line-subtle);
+                border: 1.5px solid var(--line-subtle);
             }
 
             .rueckgeld-box.bereit {
@@ -646,8 +631,8 @@
             }
 
             .modal-abbrechen {
-                padding: 13px 10px;
-                border: 1px solid var(--line-strong);
+                padding: 14px 10px;
+                border: 1.5px solid var(--line-strong);
                 border-radius: 8px;
                 background-color: var(--surface-card);
                 color: var(--ink-primary);
@@ -658,8 +643,8 @@
             }
 
             .modal-abschliessen {
-                padding: 13px 10px;
-                border: 1px solid var(--accent-action);
+                padding: 14px 10px;
+                border: 1.5px solid var(--accent-action);
                 border-radius: 8px;
                 background-color: var(--accent-action);
                 color: #ffffff;
@@ -691,8 +676,8 @@
                 }
 
                 .produkte {
-                    grid-template-columns: repeat(2, 1fr);
-                    gap: 10px;
+                    grid-template-columns: repeat(3, 1fr);
+                    gap: 12px;
                 }
 
                 .warenkorb {
@@ -738,22 +723,19 @@
                     <!-- GLÜHWEIN -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="gluehwein.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Glühwein</span>
-                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="gluehwein.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Glühwein</span>
+                                <span class="preis">3,50 €</span>
                             </span>
-                            <span class="preis">3,50 €</span>
                         </button>
                         <button
                             type="button"
@@ -762,29 +744,26 @@
                             onclick="entfernen('Glühwein')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
 
                     <!-- GLÜHWEIN MIT SCHUSS -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Glühwein-Schuss')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="gluehwein-schuss.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Glühwein mit Schuss</span>
-                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="gluehwein-schuss.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Glühwein mit Schuss</span>
+                                <span class="preis">4,00 €</span>
                             </span>
-                            <span class="preis">4,00 €</span>
                         </button>
                         <button
                             type="button"
@@ -793,29 +772,26 @@
                             onclick="entfernen('Glühwein-Schuss')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
 
                     <!-- KAKAO -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Kakao')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="kakao.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Kakao</span>
-                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="kakao.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Kakao</span>
+                                <span class="preis">2,50 €</span>
                             </span>
-                            <span class="preis">2,50 €</span>
                         </button>
                         <button
                             type="button"
@@ -824,29 +800,26 @@
                             onclick="entfernen('Kakao')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
 
                     <!-- KAKAO MIT SCHUSS -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Kakao-Schuss')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="kakao-schuss.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Kakao mit Schuss</span>
-                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="kakao-schuss.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Kakao mit Schuss</span>
+                                <span class="preis">4,00 €</span>
                             </span>
-                            <span class="preis">4,00 €</span>
                         </button>
                         <button
                             type="button"
@@ -855,29 +828,26 @@
                             onclick="entfernen('Kakao-Schuss')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
 
                     <!-- KINDERPUNSCH -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Kinderpunsch')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="kinderpunsch.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Kinderpunsch</span>
-                                    <span class="produkt-pfandhinweis">inkl. 2,00 € Pfand</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="kinderpunsch.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Kinderpunsch</span>
+                                <span class="preis">2,00 €</span>
                             </span>
-                            <span class="preis">2,00 €</span>
                         </button>
                         <button
                             type="button"
@@ -886,29 +856,26 @@
                             onclick="entfernen('Kinderpunsch')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
 
                     <!-- PFANDRÜCKGABE -->
                     <div class="produkt-container">
                         <button type="button" class="produkt" onclick="Hinzufuegen('Pfandrückgabe')">
-                            <span class="produkt-links">
-                                <img
-                                    class="produkt-bild"
-                                    src="pfand.png"
-                                    alt=""
-                                    width="240"
-                                    height="240"
-                                    loading="eager"
-                                    decoding="async"
-                                />
-                                <span class="produkt-inhalt">
-                                    <span class="produkt-name">Pfandrückgabe</span>
-                                    <span class="produkt-pfandhinweis">Gutschrift je Becher</span>
-                                </span>
+                            <img
+                                class="produkt-bild"
+                                src="pfand.png"
+                                alt=""
+                                width="240"
+                                height="240"
+                                loading="eager"
+                                decoding="async"
+                            />
+                            <span class="produkt-inhalt">
+                                <span class="produkt-name">Pfandrückgabe</span>
+                                <span class="preis">-2,00 €</span>
                             </span>
-                            <span class="preis">-2,00 €</span>
                         </button>
                         <button
                             type="button"
@@ -917,7 +884,7 @@
                             onclick="entfernen('Pfandrückgabe')"
                             style="display: none"
                         >
-                            - 0
+                            − 0
                         </button>
                     </div>
                 </div>
