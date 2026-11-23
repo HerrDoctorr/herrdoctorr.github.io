@@ -8,6 +8,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=League+Spartan:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="gluehwein.png">
+  <link rel="preload" as="image" href="gluehwein-schuss.png">
+  <link rel="preload" as="image" href="kakao.png">
+  <link rel="preload" as="image" href="kakao-schuss.png">
+  <link rel="preload" as="image" href="kinderpunsch.png">
+  <link rel="preload" as="image" href="pfand.png">
 
   <style>
 
@@ -60,27 +66,6 @@
       font-size: 13px;
       font-weight: 500;
       margin-top: 2px;
-    }
-
-    .live-badge {
-      background-color: #b88b4a;
-      color: #F5F2E0;
-      font-family: 'League Spartan', sans-serif;
-      font-size: 14px;
-      font-weight: 600;
-      padding: 6px 12px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
-
-    .live-punkt {
-      width: 8px;
-      height: 8px;
-      background-color: #e0f5e5;
-      border-radius: 50%;
     }
 
     .logo {
@@ -390,31 +375,14 @@
 </head>
 <body>
 
-<div id="pin-overlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0,0,0,0.85); display: flex; justify-content: center; align-items: center; z-index: 9999; font-family: sans-serif;">
-  <div style="background: #ffffff; padding: 30px; border-radius: 16px; text-align: center; max-width: 320px; width: 90%; box-shadow: 0 10px 25px rgba(0,0,0,0.3);">
-    <h2 style="margin-top: 0; color: #333;">Login</h2>
-    <p style="color: #666; font-size: 14px;">Bitte PIN eingeben, um fortzufahren:</p>
-    
-    <input type="password" id="pin-input" placeholder="****" maxlength="8" style="width: 100%; padding: 12px; font-size: 24px; text-align: center; letter-spacing: 6px; margin: 15px 0; border: 2px solid #ccc; border-radius: 8px; box-sizing: border-box; outline: none;">
-    
-    <div id="pin-error" style="color: #ef4444; font-size: 13px; display: none; margin-bottom: 10px;">Falscher PIN <br> Bitte erneut versuchen</div>
-    
-    <button onclick="checkPin()" style="width: 100%; padding: 12px; background: #7A161F; color: white; border: none; border-radius: 8px; font-size: 16px; font-weight: bold; cursor: pointer;">Anmelden</button>
-  </div>
-</div>
-
 <!-- NEUER BANNER -->
   <div class="banner">
     <div class="banner-left">
-      <img src="Logo1zu1.png" alt="Messdiener Logo" class="logo">
+      <img src="Logo1zu1.png" alt="Messdiener Logo" class="logo" width="180" height="180" loading="eager" decoding="async">
       <div class="banner-text">
         <span class="banner-title">AVANTI MINISTRARE</span>
         <span class="banner-subtitle">Lembeck Leuchtet • 27.11.2026</span>
       </div>
-    </div>
-    <div class="live-badge">
-      <div class="live-punkt"></div>
-      Live
     </div>
   </div>
 
@@ -430,7 +398,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Glühwein')"
           >
-          <img class="produkt-bild" src="gluehwein.png" alt="">
+          <img class="produkt-bild" src="gluehwein.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Glühwein
             <span class="preis">3,50 €</span>
@@ -453,7 +421,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Glühwein-Schuss')"
           >
-          <img class="produkt-bild" src="gluehwein-schuss.png" alt="">
+          <img class="produkt-bild" src="gluehwein-schuss.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Glühwein mit Schuss
             <span class="preis">4,00 €
@@ -477,7 +445,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Kakao')"
           >
-          <img class="produkt-bild" src="kakao.png" alt="">
+          <img class="produkt-bild" src="kakao.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Kakao
             <span class="preis">2,50 €
@@ -501,7 +469,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Kakao-Schuss')"
           >
-          <img class="produkt-bild" src="kakao-schuss.png" alt="">
+          <img class="produkt-bild" src="kakao-schuss.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Kakao mit Schuss
             <span class="preis">4,00 €
@@ -525,7 +493,7 @@
           class="produkt" 
           onclick="Hinzufuegen('Kinderpunsch')"
           >
-          <img class="produkt-bild" src="kinderpunsch.png" alt="">
+          <img class="produkt-bild" src="kinderpunsch.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Kinderpunsch
             <span class="preis">2,00 €
@@ -549,7 +517,7 @@
           class="produkt"
           onclick="Hinzufuegen('Pfandrückgabe')"
         >
-          <img class="produkt-bild" src="pfand.png" alt="">
+          <img class="produkt-bild" src="pfand.png" alt="" width="240" height="240" loading="eager" decoding="async">
           <span class="produkt-inhalt">
             Pfandrückgabe
             <span class="preis">-2,00 €</span>
@@ -625,37 +593,6 @@
 </footer>
 
   <script>
-
-const RICHTIGER_PIN = "2026"; // <-- Hier deinen PIN festlegen
-
-  // Beim Laden prüfen, ob schon eingeloggt
-  document.addEventListener("DOMContentLoaded", function() {
-    if (sessionStorage.getItem("kasse_angemeldet") === "true") {
-      document.getElementById("pin-overlay").style.display = "none";
-    } else {
-      document.getElementById("pin-input").focus();
-    }
-  });
-
-  // Funktion zum Prüfen des PINs
-  function checkPin() {
-    const eingabe = document.getElementById("pin-input").value;
-    if (eingabe === RICHTIGER_PIN) {
-      sessionStorage.setItem("kasse_angemeldet", "true");
-      document.getElementById("pin-overlay").style.display = "none";
-    } else {
-      document.getElementById("pin-error").style.display = "block";
-      document.getElementById("pin-input").value = "";
-      document.getElementById("pin-input").focus();
-    }
-  }
-
-  // Erlaubt das Bestätigen mit der Enter-Taste
-  document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter" && sessionStorage.getItem("kasse_angemeldet") !== "true") {
-      checkPin();
-    }
-  });
 
     const produktPreise = {
       "Glühwein": 3.50,
