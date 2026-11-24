@@ -858,21 +858,23 @@
                 }
 
                 .topbar {
-                    padding: 14px 24px;
+                    padding: 12px 20px;
                 }
 
                 .topbar-title {
-                    font-size: 18px;
+                    font-size: 17px;
                 }
 
                 .pos-shell {
                     max-width: 100%;
-                    height: calc(100dvh - 122px); overflow: hidden;
+                    min-height: auto;
+                    height: auto;
+                    overflow: visible;
                     display: grid;
-                    grid-template-columns: minmax(0, 1.75fr) minmax(360px, 1fr);
-                    gap: 22px;
+                    grid-template-columns: minmax(0, 1.75fr) minmax(340px, 1fr);
+                    gap: 18px;
                     align-items: stretch;
-                    padding: 20px 24px 0;
+                    padding: 14px 20px 0;
                 }
 
                 .produkte-bereich {
@@ -883,55 +885,55 @@
                 .produkte {
                     flex: 1;
                     grid-template-columns: repeat(3, 1fr);
-                    grid-auto-rows: 1fr;
-                    gap: 16px;
+                    grid-auto-rows: minmax(175px, 1fr);
+                    gap: 12px;
                 }
 
                 .produkt {
-                    min-height: 0px;
+                    min-height: 175px;
                     height: 100%;
-                    padding: 14px 12px;
-                    border-radius: 16px;
+                    padding: 16px 12px;
+                    border-radius: 14px;
                 }
 
                 .produkt-bild {
-                    width: 74px;
-                    height: 74px;
-                    margin-bottom: 8px;
+                    width: 72px;
+                    height: 72px;
+                    margin-bottom: 10px;
                 }
 
                 .produkt-name {
-                    font-size: 20px;
+                    font-size: 18px;
                 }
 
                 .preis {
-                    font-size: 17px;
-                    padding: 5px 14px;
+                    font-size: 15px;
+                    padding: 4px 12px;
                 }
 
                 .anzahl-badge {
-                    top: 12px;
-                    right: 12px;
-                    min-width: 34px;
-                    height: 34px;
-                    font-size: 16px;
+                    top: 10px;
+                    right: 10px;
+                    min-width: 30px;
+                    height: 30px;
+                    font-size: 14px;
                 }
 
                 .minus-button {
-                    padding: 8px 6px;
-                    font-size: 8px;
+                    padding: 10px 8px;
+                    font-size: 16px;
                 }
 
                 .warenkorb {
                     margin-top: 0;
-                    padding: 22px;
-                    border-radius: 16px;
+                    padding: 18px;
+                    border-radius: 14px;
                     display: flex;
                     flex-direction: column;
                     justify-content: space-between;
                     position: sticky;
-                    top: 16px;
-                    min-height: calc(100vh - 116px);
+                    top: 14px;
+                    min-height: 100%;
                 }
 
                 #warenkorb-liste {
@@ -945,35 +947,36 @@
 
                 .leer {
                     margin: auto 0;
-                    font-size: 16px;
+                    font-size: 15px;
                 }
 
                 .warenkorb-zeile {
-                    padding: 14px 0;
-                    font-size: 17px;
+                    padding: 11px 0;
+                    font-size: 16px;
                 }
 
                 .gesamt {
-                    font-size: 30px;
-                    padding-top: 16px;
+                    font-size: 26px;
+                    padding-top: 14px;
                 }
 
                 .aktions-buttons {
-                    gap: 12px;
-                    margin-top: 18px;
+                    gap: 10px;
+                    margin-top: 14px;
                 }
 
                 .loeschen,
                 .bezahlen {
-                    padding: 20px 16px;
-                    font-size: 19px;
-                    border-radius: 12px;
+                    padding: 16px 14px;
+                    font-size: 18px;
+                    border-radius: 10px;
                 }
 
                 .mobile-warenkorb {
                     display: none;
                 }
             }
+            
         </style>
     </head>
     <body>
