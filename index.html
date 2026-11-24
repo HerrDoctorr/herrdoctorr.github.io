@@ -6,7 +6,7 @@
         <meta name="theme-color" content="#1e293b" />
         <title>Avanti Ministrare</title>
 
-        <link rel="apple-touch-icon" href="logo.png" />
+        <link rel="apple-touch-icon" href="Logo1zu1.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -81,7 +81,7 @@
             .logo {
                 width: 38px;
                 height: 38px;
-                border-radius: 8px;
+                border-radius: 50%;
                 object-fit: cover;
                 background-color: #ffffff;
                 border: 1px solid rgba(255, 255, 255, 0.25);
@@ -116,17 +116,6 @@
                 align-items: center;
                 gap: 8px;
                 flex-shrink: 0;
-            }
-
-            .topbar-pill {
-                font-size: 11px;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 0.06em;
-                color: #e2e8f0;
-                background-color: rgba(255, 255, 255, 0.1);
-                padding: 6px 9px;
-                border-radius: 6px;
             }
 
             .journal-btn {
@@ -174,6 +163,34 @@
             .section-sub {
                 font-size: 12px;
                 color: var(--ink-muted);
+            }
+
+            .section-header-controls {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .schlussverkauf-btn {
+                padding: 7px 10px;
+                border: 1px solid var(--line-strong);
+                border-radius: 8px;
+                background-color: var(--surface-card);
+                color: var(--ink-primary);
+                font-size: 12px;
+                font-weight: 700;
+                cursor: pointer;
+                white-space: nowrap;
+            }
+
+            .schlussverkauf-btn:hover {
+                background-color: var(--surface-muted);
+            }
+
+            .schlussverkauf-btn[aria-pressed="true"] {
+                border-color: var(--accent-danger);
+                background-color: var(--accent-danger-soft);
+                color: var(--accent-danger);
             }
 
             /* PRODUKT-KACHELN MIT FESTER GESAMTHÖHE (KEIN RUTSCHEN BEIM MINUS-BUTTON) */
@@ -281,6 +298,9 @@
             }
 
             .preis {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
                 font-family: "Plus Jakarta Sans", sans-serif;
                 font-size: 13px;
                 font-weight: 700;
@@ -288,6 +308,21 @@
                 background-color: var(--surface-muted);
                 padding: 2px 9px;
                 border-radius: 6px;
+                white-space: nowrap;
+            }
+
+            .preis-alt {
+                display: none;
+            }
+
+            .preis.schlussverkauf .preis-alt {
+                display: inline;
+                color: var(--accent-danger);
+                text-decoration: line-through;
+            }
+
+            .preis.schlussverkauf .preis-aktuell {
+                color: var(--accent-action);
             }
 
             .minus-button {
@@ -957,12 +992,23 @@
             }
 
             @media (max-width: 420px) {
-                .topbar-pill {
-                    display: none;
+                .section-header {
+                    align-items: flex-start;
+                    flex-wrap: wrap;
+                    gap: 8px;
+                }
+
+                .section-header-controls {
+                    width: 100%;
+                    justify-content: space-between;
                 }
             }
 
             @media (max-width: 767px) {
+                .warenkorb {
+                    margin-bottom: 28px;
+                }
+
                 .warenkorb .aktions-buttons {
                     display: none;
                 }
@@ -981,6 +1027,7 @@
                     gap: 18px;
                     align-items: stretch;
                     padding: 14px 20px 0;
+                    margin-bottom: 36px;
                 }
 
                 .produkte-bereich {
@@ -1039,7 +1086,7 @@
                 }
 
                 .warenkorb {
-                    margin-top: 0;
+                    margin-top: 26px;
                     padding: 18px;
                     border-radius: 14px;
                     display: flex;
@@ -1047,7 +1094,7 @@
                     justify-content: space-between;
                     position: sticky;
                     top: 14px;
-                    min-height: 100%;
+                    min-height: calc(100% - 26px);
                 }
 
                 #warenkorb-liste {
@@ -1112,7 +1159,7 @@
         <header class="topbar">
             <div class="topbar-brand">
                 <img
-                    src="logo.png"
+                    src="Logo1zu1.png"
                     alt="Avanti Ministrare Logo"
                     class="logo"
                     width="180"
@@ -1122,14 +1169,13 @@
                 />
                 <div class="topbar-titles">
                     <span class="topbar-title">AVANTI MINISTRARE</span>
-                    <span class="topbar-meta">Lembeck Leuchtet • 27.11.2026</span>
+                    <span class="topbar-meta">Avanti PoS Version 3.7</span>
                 </div>
             </div>
             <div class="topbar-actions">
                 <button type="button" class="journal-btn" onclick="oeffneJournalModal()">
-                    Verlauf (<span id="journal-anzahl-badge">0</span>)
+                    Bericht (<span id="journal-anzahl-badge">0</span>)
                 </button>
-                <span class="topbar-pill">Bar-Kasse</span>
             </div>
         </header>
 
@@ -1137,7 +1183,16 @@
             <section class="produkte-bereich" aria-label="Produkte">
                 <div class="section-header">
                     <h1 class="section-title">Artikelauswahl</h1>
-                    <span class="section-sub">+2,00 € Pfand je Getränk</span>
+                    <div class="section-header-controls">
+                        <span class="section-sub">+2,00 € Pfand je Getränk</span>
+                        <button
+                            type="button"
+                            id="schlussverkauf-button"
+                            class="schlussverkauf-btn"
+                            aria-pressed="false"
+                            onclick="schalteSchlussverkaufUm()"
+                        >Schlussverkauf starten</button>
+                    </div>
                 </div>
 
                 <div class="produkte">
@@ -1156,7 +1211,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Glühwein</span>
-                                <span class="preis">3,50 €</span>
+                                <span class="preis" data-produkt-id="gluehwein"><span class="preis-alt">3,50 €</span><span class="preis-aktuell">3,50 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1195,7 +1250,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Glühwein mit Schuss</span>
-                                <span class="preis">4,00 €</span>
+                                <span class="preis" data-produkt-id="gluehwein-schuss"><span class="preis-alt">4,00 €</span><span class="preis-aktuell">4,00 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1229,7 +1284,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Kakao</span>
-                                <span class="preis">2,50 €</span>
+                                <span class="preis" data-produkt-id="kakao"><span class="preis-alt">2,50 €</span><span class="preis-aktuell">2,50 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1268,7 +1323,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Kakao mit Schuss</span>
-                                <span class="preis">4,00 €</span>
+                                <span class="preis" data-produkt-id="kakao-schuss"><span class="preis-alt">4,00 €</span><span class="preis-aktuell">4,00 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1307,7 +1362,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Kinderpunsch</span>
-                                <span class="preis">2,00 €</span>
+                                <span class="preis" data-produkt-id="kinderpunsch"><span class="preis-alt">2,00 €</span><span class="preis-aktuell">2,00 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1346,7 +1401,7 @@
                             />
                             <span class="produkt-inhalt">
                                 <span class="produkt-name">Pfandrückgabe</span>
-                                <span class="preis">-2,00 €</span>
+                                <span class="preis" data-produkt-id="pfandrueckgabe"><span class="preis-alt">-2,00 €</span><span class="preis-aktuell">-2,00 €</span></span>
                             </span>
                         </button>
                         <button
@@ -1372,7 +1427,7 @@
                     <h2>Aktueller Bon</h2>
                     <div class="warenkorb-kopf-rechts">
                         <button type="button" class="bon-journal-btn" onclick="oeffneJournalModal()">
-                            Verlauf (<span id="bon-journal-anzahl-badge">0</span>)
+                            Bericht (<span id="bon-journal-anzahl-badge">0</span>)
                         </button>
                     </div>
                 </div>
@@ -1538,7 +1593,7 @@
         >
             <div class="modal-box">
                 <div class="modal-header">
-                    <h3 id="journal-modal-titel">Verlauf (dieses Gerät)</h3>
+                    <h3 id="journal-modal-titel">Lokaler Bericht</h3>
                     <button
                         type="button"
                         class="modal-close"
@@ -1549,10 +1604,6 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <div class="journal-hinweis">
-                        Lokale Übersicht nur für dieses Smartphone/Tablet (kein geräteübergreifender Kassensturz).
-                    </div>
-
                     <div class="journal-stats">
                         <div class="stat-karte">
                             <span class="stat-label">Abgeschlossen</span>
@@ -1572,7 +1623,7 @@
 
                     <div class="modal-aktionen">
                         <button type="button" class="modal-abbrechen" onclick="journalLeeren()">
-                            Verlauf leeren
+                            Löschen
                         </button>
                         <button type="button" class="modal-abschliessen" onclick="schliesseJournalModal()">
                             Schließen
@@ -1585,19 +1636,10 @@
         <footer class="footer">
             <div class="footer-inner">
                 <div class="footer-brand">
-                    <img
-                        src="Logo1zu1.png"
-                        alt=""
-                        class="footer-logo"
-                        width="30"
-                        height="30"
-                        loading="lazy"
-                        decoding="async"
-                    />
-                    <span>Messdiener St. Laurentius Lembeck</span>
+                    <span>&copy; AVANTI MINISTRARE</span>
                 </div>
                 <div class="footer-meta">
-                    <span>&copy; AVANTI MINISTRARE - 2026</span>
+                    <span>Messdiener St. Laurentius Lembeck</span>
                     <span>Entwickelt von <a href="https://capturedby-marcel.de/">Marcel Hmng.</a></span>
                 </div>
             </div>
@@ -1610,6 +1652,7 @@
                 KLICK_SCHUTZ_MS: 110,
                 FLASH_DAUER_MS: 180,
                 STORAGE_KEY_JOURNAL: "avanti_ministrare_pos_journal_v1",
+                STORAGE_KEY_SCHLUSSVERKAUF: "avanti_ministrare_pos_schlussverkauf_v1",
                 MAX_JOURNAL_EINTRAEGE: 250,
             };
 
@@ -1626,6 +1669,13 @@
             let aktuellerGesamtbetrag = 0;
             let gegebenerBetrag = 0;
             let letzterKlickZeitpunkt = {};
+            let schlussverkaufAktiv = false;
+
+            try {
+                schlussverkaufAktiv = localStorage.getItem(CONFIG.STORAGE_KEY_SCHLUSSVERKAUF) === "true";
+            } catch (error) {
+                console.error("Der Schlussverkauf-Modus konnte nicht geladen werden.", error);
+            }
 
             function formatiereEuro(betrag) {
                 return betrag.toFixed(2).replace(".", ",") + " €";
@@ -1633,6 +1683,40 @@
 
             function rundeCent(wert) {
                 return Math.round(wert * 100) / 100;
+            }
+
+            function preisFuerProdukt(produktId) {
+                const produkt = PRODUKTE[produktId];
+                return schlussverkaufAktiv && !produkt.istPfandRueckgabe ? 1 : produkt.preis;
+            }
+
+            function aktualisiereSchlussverkaufAnzeige() {
+                document.querySelectorAll(".schlussverkauf-btn").forEach((button) => {
+                    button.innerText = schlussverkaufAktiv ? "Schlussverkauf beenden" : "Schlussverkauf starten";
+                    button.setAttribute("aria-pressed", String(schlussverkaufAktiv));
+                });
+
+                document.querySelectorAll("[data-produkt-id]").forEach((preisAnzeige) => {
+                    const produktId = preisAnzeige.dataset.produktId;
+                    const produkt = PRODUKTE[produktId];
+                    preisAnzeige.classList.toggle("schlussverkauf", schlussverkaufAktiv && !produkt.istPfandRueckgabe);
+                    preisAnzeige.querySelector(".preis-alt").innerText = formatiereEuro(produkt.preis);
+                    preisAnzeige.querySelector(".preis-aktuell").innerText = formatiereEuro(preisFuerProdukt(produktId));
+                });
+            }
+
+            function schalteSchlussverkaufUm() {
+                const neuerStatus = !schlussverkaufAktiv;
+                try {
+                    localStorage.setItem(CONFIG.STORAGE_KEY_SCHLUSSVERKAUF, String(neuerStatus));
+                } catch (error) {
+                    console.error("Der Schlussverkauf-Modus konnte nicht gespeichert werden.", error);
+                    window.alert("Die Preisänderung gilt nur bis zum Neuladen, da sie nicht gespeichert werden konnte.");
+                }
+
+                schlussverkaufAktiv = neuerStatus;
+                aktualisiereSchlussverkaufAnzeige();
+                aktualisiereWarenkorb();
             }
 
             function muelltonnenIcon() {
@@ -1750,7 +1834,7 @@
                     const karte = document.getElementById(`card-${produktId}`);
 
                     if (anzahl > 0) {
-                        const produktGesamt = rundeCent(produkt.preis * anzahl);
+                        const produktGesamt = rundeCent(preisFuerProdukt(produktId) * anzahl);
                         getraenkeGesamt = rundeCent(getraenkeGesamt + produktGesamt);
 
                         if (!produkt.istPfandRueckgabe) {
@@ -1800,7 +1884,7 @@
 
                 if (!hatBestellungen) {
                     aktuellerGesamtbetrag = 0;
-                    warenkorbListe.innerHTML = "<p class='leer'>Keine Positionen erfasst.</p>";
+                    warenkorbListe.innerHTML = "<p class='leer'>Keine Bestellungen erfasst.</p>";
                     setzeGesamtAnzeige(0);
                     return;
                 }
@@ -2091,6 +2175,7 @@
             });
 
             aktualisiereJournalBadge();
+            aktualisiereSchlussverkaufAnzeige();
             aktualisiereWarenkorb();
             const mobileMediaQuery = window.matchMedia("(max-width: 767px)");
             if (mobileMediaQuery.addEventListener) {
