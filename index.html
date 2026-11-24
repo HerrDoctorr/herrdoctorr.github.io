@@ -4,9 +4,9 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#1e293b" />
-        <title>Avanti Ministrare • Kasse</title>
+        <title>Avanti Ministrare</title>
 
-        <link rel="apple-touch-icon" href="Logo1zu1.png" />
+        <link rel="apple-touch-icon" href="logo.png" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -528,17 +528,49 @@
 
             /* FOOTER */
             .footer {
-                padding: 22px 16px 14px;
+                padding: 18px 16px 14px;
                 text-align: center;
                 font-size: 12px;
                 color: var(--ink-muted);
+                background-color: var(--surface-card);
+                border-top: 1px solid var(--line-subtle);
             }
 
             .footer-inner {
+                max-width: 1100px;
+                margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-                gap: 3px;
+                gap: 12px;
+            }
+
+            .footer-brand {
+                display: flex;
+                align-items: center;
+                gap: 9px;
+                color: var(--ink-primary);
+                font-weight: 600;
+            }
+
+            .footer-logo {
+                width: 30px;
+                height: 30px;
+                object-fit: contain;
+                flex-shrink: 0;
+            }
+
+            .footer-meta {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px 12px;
+                font-size: 11px;
+            }
+
+            .footer-meta a {
+                color: inherit;
+                text-underline-offset: 2px;
             }
 
             /* OVERLAY / MODAL */
@@ -1080,8 +1112,8 @@
         <header class="topbar">
             <div class="topbar-brand">
                 <img
-                    src="Logo1zu1.png"
-                    alt="Messdiener Logo"
+                    src="logo.png"
+                    alt="Avanti Ministrare Logo"
                     class="logo"
                     width="180"
                     height="180"
@@ -1552,10 +1584,22 @@
 
         <footer class="footer">
             <div class="footer-inner">
-                <span>&copy; AVANTI MINISTRARE - 2026</span>
-                <span>Messdiener St. Laurentius Lembeck</span>
-                <br />
-                <span>Entwickelt von Marcel Hmng.</span>
+                <div class="footer-brand">
+                    <img
+                        src="Logo1zu1.png"
+                        alt=""
+                        class="footer-logo"
+                        width="30"
+                        height="30"
+                        loading="lazy"
+                        decoding="async"
+                    />
+                    <span>Messdiener St. Laurentius Lembeck</span>
+                </div>
+                <div class="footer-meta">
+                    <span>&copy; AVANTI MINISTRARE - 2026</span>
+                    <span>Entwickelt von <a href="https://capturedby-marcel.de/">Marcel Hmng.</a></span>
+                </div>
             </div>
         </footer>
 
