@@ -976,6 +976,129 @@
                     display: none;
                 }
             }
+                        /* TABLET (GALAXY TAB S10 FE+ & BREITER) */
+            @media (min-width: 768px) {
+                body {
+                    padding-bottom: 16px;
+                }
+
+                .topbar {
+                    padding: 14px 24px;
+                }
+
+                .topbar-title {
+                    font-size: 18px;
+                }
+
+                .pos-shell {
+                    max-width: 100%;
+                    min-height: calc(100vh - 96px);
+                    display: grid;
+                    grid-template-columns: minmax(0, 1.75fr) minmax(360px, 1fr);
+                    gap: 22px;
+                    align-items: stretch;
+                    padding: 20px 24px 0;
+                }
+
+                .produkte-bereich {
+                    display: flex;
+                    flex-direction: column;
+                }
+
+                .produkte {
+                    flex: 1;
+                    grid-template-columns: repeat(3, 1fr);
+                    grid-auto-rows: 1fr;
+                    gap: 16px;
+                }
+
+                .produkt {
+                    min-height: 230px;
+                    height: 100%;
+                    padding: 24px 16px;
+                    border-radius: 16px;
+                }
+
+                .produkt-bild {
+                    width: 96px;
+                    height: 96px;
+                    margin-bottom: 14px;
+                }
+
+                .produkt-name {
+                    font-size: 20px;
+                }
+
+                .preis {
+                    font-size: 17px;
+                    padding: 5px 14px;
+                }
+
+                .anzahl-badge {
+                    top: 12px;
+                    right: 12px;
+                    min-width: 34px;
+                    height: 34px;
+                    font-size: 16px;
+                }
+
+                .minus-button {
+                    padding: 14px 10px;
+                    font-size: 18px;
+                }
+
+                .warenkorb {
+                    margin-top: 0;
+                    padding: 22px;
+                    border-radius: 16px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    position: sticky;
+                    top: 16px;
+                    min-height: calc(100vh - 116px);
+                }
+
+                #warenkorb-liste {
+                    flex: 1;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    overflow-y: auto;
+                    margin: 8px 0;
+                }
+
+                .leer {
+                    margin: auto 0;
+                    font-size: 16px;
+                }
+
+                .warenkorb-zeile {
+                    padding: 14px 0;
+                    font-size: 17px;
+                }
+
+                .gesamt {
+                    font-size: 30px;
+                    padding-top: 16px;
+                }
+
+                .aktions-buttons {
+                    gap: 12px;
+                    margin-top: 18px;
+                }
+
+                .loeschen,
+                .bezahlen {
+                    padding: 20px 16px;
+                    font-size: 19px;
+                    border-radius: 12px;
+                }
+
+                .mobile-warenkorb {
+                    display: none;
+                }
+            }
             
         </style>
     </head>
