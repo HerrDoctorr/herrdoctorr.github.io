@@ -37,6 +37,8 @@
                 --accent-action-soft: #f0fdf4;
                 --accent-danger: #dc2626;
                 --accent-danger-soft: #fef2f2;
+                --accent-minus: #7a161f;
+                --accent-minus-soft: #f9eaec;
             }
 
             * {
@@ -293,24 +295,58 @@
                 height: 38px;
                 width: 100%;
                 padding: 0 8px;
-                background-color: var(--surface-card);
-                border: 1.5px solid #fecaca;
+                background-color: var(--accent-minus-soft);
+                border: 1.5px solid var(--accent-minus);
                 border-radius: 10px;
                 font-family: "Plus Jakarta Sans", sans-serif;
                 font-size: 15px;
                 font-weight: 700;
-                color: var(--accent-danger);
+                color: var(--accent-minus);
                 cursor: pointer;
                 transition: background-color 0.12s ease, border-color 0.12s ease, transform 0.06s ease;
             }
 
             .minus-button:hover {
-                background-color: var(--accent-danger-soft);
-                border-color: var(--accent-danger);
+                background-color: #efdadd;
+                border-color: var(--accent-minus);
             }
 
             .minus-button:active {
                 transform: scale(0.98);
+            }
+
+            .minus-button svg {
+                width: 20px;
+                height: 20px;
+                display: block;
+                margin: 0 auto;
+                pointer-events: none;
+            }
+
+            @media (max-width: 767px) {
+                .minus-button {
+                    background-color: var(--accent-minus-soft);
+                    border: 2px solid var(--accent-minus);
+                    color: var(--accent-minus);
+                    font-size: 20px;
+                    line-height: 1;
+                    box-shadow: 0 2px 5px rgba(122, 22, 31, 0.18);
+                }
+
+                .minus-button:active:not(:disabled) {
+                    background-color: #fee2e2;
+                    border-color: #b91c1c;
+                    box-shadow: none;
+                }
+
+                .minus-button:disabled {
+                    background-color: var(--surface-muted);
+                    border-color: var(--line-subtle);
+                    color: #94a3b8;
+                    cursor: not-allowed;
+                    transform: none;
+                    box-shadow: none;
+                }
             }
 
             /* BON / WARENKORB */
@@ -1083,9 +1119,14 @@
                             id="minus-gluehwein"
                             class="minus-button"
                             onclick="entfernen('gluehwein')"
-                            style="display: none"
+                            aria-label="Ein Glühwein entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
 
@@ -1117,9 +1158,14 @@
                             id="minus-gluehwein-schuss"
                             class="minus-button"
                             onclick="entfernen('gluehwein-schuss')"
-                            style="display: none"
+                            aria-label="Einen Glühwein mit Schuss entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
 
@@ -1146,9 +1192,14 @@
                             id="minus-kakao"
                             class="minus-button"
                             onclick="entfernen('kakao')"
-                            style="display: none"
+                            aria-label="Ein Kakao entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
 
@@ -1180,9 +1231,14 @@
                             id="minus-kakao-schuss"
                             class="minus-button"
                             onclick="entfernen('kakao-schuss')"
-                            style="display: none"
+                            aria-label="Einen Kakao mit Schuss entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
 
@@ -1214,9 +1270,14 @@
                             id="minus-kinderpunsch"
                             class="minus-button"
                             onclick="entfernen('kinderpunsch')"
-                            style="display: none"
+                            aria-label="Ein Kinderpunsch entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
 
@@ -1248,9 +1309,14 @@
                             id="minus-pfandrueckgabe"
                             class="minus-button"
                             onclick="entfernen('pfandrueckgabe')"
-                            style="display: none"
+                            aria-label="Eine Pfandrückgabe entfernen"
                         >
-                            − 0
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M3 6h18" />
+                                <path d="M8 6V4h8v2" />
+                                <path d="M19 6l-1 14H6L5 6" />
+                                <path d="M10 10v6M14 10v6" />
+                            </svg>
                         </button>
                     </div>
                 </div>
@@ -1508,6 +1574,18 @@
                 return Math.round(wert * 100) / 100;
             }
 
+            function muelltonnenIcon() {
+                return `
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4h8v2"></path>
+                        <path d="M19 6l-1 14H6L5 6"></path>
+                        <path d="M10 10v6M14 10v6"></path>
+                    </svg>
+                `;
+            }
+
             function istTouchGeraet() {
                 return window.matchMedia("(pointer: coarse)").matches;
             }
@@ -1593,6 +1671,7 @@
                 const warenkorbListe = document.getElementById("warenkorb-liste");
                 const loeschenButtons = document.querySelectorAll(".loeschen");
                 const bezahlenButtons = document.querySelectorAll(".bezahlen");
+                const istMobilAnsicht = window.matchMedia("(max-width: 767px)").matches;
 
                 const hatBestellungen = Object.keys(bestellungen).length > 0;
                 loeschenButtons.forEach((button) => (button.disabled = !hatBestellungen));
@@ -1627,7 +1706,9 @@
 
                         if (minusButton) {
                             minusButton.style.display = "block";
-                            minusButton.innerText = "− " + anzahl;
+                            minusButton.innerHTML = muelltonnenIcon();
+                            minusButton.setAttribute("aria-label", "Ein " + produkt.name + " entfernen");
+                            minusButton.disabled = false;
                         }
                         if (badge) {
                             badge.innerText = anzahl + "×";
@@ -1638,7 +1719,14 @@
                         }
                     } else {
                         if (minusButton) {
-                            minusButton.style.display = "none";
+                            if (istMobilAnsicht) {
+                                minusButton.style.display = "block";
+                                minusButton.innerHTML = muelltonnenIcon();
+                                minusButton.disabled = true;
+                            } else {
+                                minusButton.style.display = "none";
+                                minusButton.disabled = false;
+                            }
                         }
                         if (badge) {
                             badge.classList.remove("sichtbar");
@@ -1942,6 +2030,13 @@
             });
 
             aktualisiereJournalBadge();
+            aktualisiereWarenkorb();
+            const mobileMediaQuery = window.matchMedia("(max-width: 767px)");
+            if (mobileMediaQuery.addEventListener) {
+                mobileMediaQuery.addEventListener("change", aktualisiereWarenkorb);
+            } else {
+                mobileMediaQuery.addListener(aktualisiereWarenkorb);
+            }
         </script>
     </body>
 </html>
