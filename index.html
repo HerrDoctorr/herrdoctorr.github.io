@@ -47,21 +47,25 @@
 
             body {
                 margin: 0;
-                padding: 0 0 156px 0;
+                min-height: 100vh;
                 font-family: "Inter", sans-serif;
                 background-color: var(--surface-app);
                 color: var(--ink-primary);
                 font-variant-numeric: tabular-nums;
                 -webkit-tap-highlight-color: transparent;
+                display: flex;
+                flex-direction: column;
             }
 
             button {
                 font-family: inherit;
             }
 
-            /* TOP-BAR: auf Handy & Tablet ausgeblendet, ab PC sichtbar */
+            /* TOP-BAR */
             .topbar {
-                display: none;
+                position: relative;
+                z-index: 40;
+                display: flex;
                 background-color: var(--accent-brand);
                 color: #ffffff;
                 padding: 12px 16px;
@@ -112,32 +116,81 @@
             }
 
             .topbar-actions {
+                position: relative;
                 display: flex;
                 align-items: center;
                 gap: 8px;
                 flex-shrink: 0;
             }
 
-            .journal-btn {
+            .menu-toggle {
+                width: 40px;
+                height: 40px;
                 background-color: rgba(255, 255, 255, 0.14);
                 border: 1px solid rgba(255, 255, 255, 0.28);
                 color: #ffffff;
-                padding: 6px 11px;
                 border-radius: 7px;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 12px;
-                font-weight: 700;
                 cursor: pointer;
-                white-space: nowrap;
                 transition: background-color 0.12s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .journal-btn:hover {
+            .menu-toggle:hover,
+            .menu-toggle[aria-expanded="true"] {
                 background-color: rgba(255, 255, 255, 0.24);
+            }
+
+            .menu-toggle svg {
+                width: 22px;
+                height: 22px;
+            }
+
+            .topbar-menu {
+                position: absolute;
+                top: calc(100% + 8px);
+                right: 0;
+                width: min(260px, calc(100vw - 24px));
+                padding: 6px;
+                background-color: var(--surface-card);
+                border: 1px solid var(--line-subtle);
+                border-radius: 10px;
+                box-shadow: 0 12px 28px rgba(15, 23, 42, 0.22);
+            }
+
+            .topbar-menu[hidden] {
+                display: none;
+            }
+
+            .topbar-menu button {
+                width: 100%;
+                padding: 11px 12px;
+                border: 0;
+                border-radius: 7px;
+                background: transparent;
+                color: var(--ink-primary);
+                text-align: left;
+                font-size: 14px;
+                font-weight: 600;
+                cursor: pointer;
+            }
+
+            .topbar-menu button:hover {
+                background-color: var(--surface-muted);
+            }
+
+            .topbar-menu .menu-schlussverkauf-btn[aria-pressed="true"] {
+                color: var(--accent-danger);
+            }
+
+            .topbar-menu .menu-reset {
+                color: var(--accent-danger);
             }
 
             /* LAYOUT */
             .pos-shell {
+                flex: 1 0 auto;
                 max-width: 1260px;
                 margin: 0 auto;
                 padding: 14px 12px 0;
@@ -171,28 +224,6 @@
                 gap: 10px;
             }
 
-            .schlussverkauf-btn {
-                padding: 7px 10px;
-                border: 1px solid var(--line-strong);
-                border-radius: 8px;
-                background-color: var(--surface-card);
-                color: var(--ink-primary);
-                font-size: 12px;
-                font-weight: 700;
-                cursor: pointer;
-                white-space: nowrap;
-            }
-
-            .schlussverkauf-btn:hover {
-                background-color: var(--surface-muted);
-            }
-
-            .schlussverkauf-btn[aria-pressed="true"] {
-                border-color: var(--accent-danger);
-                background-color: var(--accent-danger-soft);
-                color: var(--accent-danger);
-            }
-
             /* PRODUKT-KACHELN MIT FESTER GESAMTHÖHE (KEIN RUTSCHEN BEIM MINUS-BUTTON) */
             .produkte {
                 display: grid;
@@ -204,6 +235,10 @@
                 display: flex;
                 flex-direction: column;
                 gap: 6px;
+                height: 150px;
+            }
+
+            .produkt-container.mit-loeschbutton {
                 height: 194px;
             }
 
@@ -326,6 +361,7 @@
             }
 
             .minus-button {
+                display: none;
                 flex: 0 0 38px;
                 height: 38px;
                 width: 100%;
@@ -409,31 +445,6 @@
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
                 color: var(--ink-secondary);
-            }
-
-            .warenkorb-kopf-rechts {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .bon-journal-btn {
-                background-color: var(--surface-muted);
-                border: 1px solid var(--line-strong);
-                color: var(--ink-primary);
-                padding: 5px 10px;
-                border-radius: 7px;
-                font-family: "Plus Jakarta Sans", sans-serif;
-                font-size: 12px;
-                font-weight: 700;
-                cursor: pointer;
-                white-space: nowrap;
-                transition: background-color 0.12s ease, border-color 0.12s ease;
-            }
-
-            .bon-journal-btn:hover {
-                background-color: var(--line-subtle);
-                border-color: var(--accent-brand);
             }
 
             .warenkorb-zeile {
@@ -563,12 +574,12 @@
 
             /* FOOTER */
             .footer {
+                flex-shrink: 0;
                 padding: 18px 16px 14px;
                 text-align: center;
                 font-size: 12px;
                 color: var(--ink-muted);
-                background-color: var(--surface-card);
-                border-top: 1px solid var(--line-subtle);
+                background-color: transparent;
             }
 
             .footer-inner {
@@ -969,6 +980,10 @@
                 margin-bottom: 12px;
             }
 
+            .journal-aktionen {
+                grid-template-columns: 1fr;
+            }
+
             .journal-eintrag {
                 padding: 9px 12px;
                 border-bottom: 1px solid var(--surface-muted);
@@ -993,18 +1008,27 @@
 
             @media (max-width: 420px) {
                 .section-header {
-                    align-items: flex-start;
-                    flex-wrap: wrap;
+                    align-items: center;
+                    flex-wrap: nowrap;
                     gap: 8px;
                 }
 
                 .section-header-controls {
-                    width: 100%;
-                    justify-content: space-between;
+                    width: auto;
+                    justify-content: flex-end;
+                    margin-left: auto;
+                }
+
+                .section-sub {
+                    text-align: right;
                 }
             }
 
             @media (max-width: 767px) {
+                .footer {
+                    padding-bottom: calc(14px + 156px);
+                }
+
                 .warenkorb {
                     margin-bottom: 28px;
                 }
@@ -1016,10 +1040,6 @@
 
             /* TABLET */
             @media (min-width: 768px) {
-                body {
-                    padding-bottom: 16px;
-                }
-
                 .pos-shell {
                     max-width: 100%;
                     display: grid;
@@ -1027,7 +1047,7 @@
                     gap: 18px;
                     align-items: stretch;
                     padding: 14px 20px 0;
-                    margin-bottom: 36px;
+                    margin-bottom: 0;
                 }
 
                 .produkte-bereich {
@@ -1042,6 +1062,10 @@
                 }
 
                 .produkt-container {
+                    height: 172px;
+                }
+
+                .produkt-container.mit-loeschbutton {
                     height: 220px;
                 }
 
@@ -1138,19 +1162,14 @@
                 }
             }
 
-            /* PC / DESKTOP: Topfleiste einblenden, doppelten Verlauf-Button im Bon ausblenden */
+            /* PC / DESKTOP */
             @media (min-width: 1024px) {
                 .topbar {
-                    display: flex;
                     padding: 14px 24px;
                 }
 
                 .topbar-title {
                     font-size: 18px;
-                }
-
-                .bon-journal-btn {
-                    display: none;
                 }
             }
         </style>
@@ -1173,9 +1192,34 @@
                 </div>
             </div>
             <div class="topbar-actions">
-                <button type="button" class="journal-btn" onclick="oeffneJournalModal()">
-                    Bericht (<span id="journal-anzahl-badge">0</span>)
+                <button
+                    type="button"
+                    id="menu-toggle"
+                    class="menu-toggle"
+                    aria-label="Menü öffnen"
+                    aria-controls="topbar-menu"
+                    aria-expanded="false"
+                    onclick="schalteMenueUm()"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+                        <path d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
                 </button>
+                <nav id="topbar-menu" class="topbar-menu" aria-label="Verwaltung" hidden>
+                    <button type="button" onclick="oeffneJournalAusMenue()">
+                        Kassenbericht (<span id="journal-anzahl-badge">0</span>)
+                    </button>
+                    <button
+                        type="button"
+                        id="menu-schlussverkauf-button"
+                        class="menu-schlussverkauf-btn"
+                        aria-pressed="false"
+                        onclick="schalteSchlussverkaufUm()"
+                    >Rabatt Aktion starten</button>
+                    <button type="button" class="menu-reset" onclick="oeffneResetModal()">
+                        Alles zurücksetzen
+                    </button>
+                </nav>
             </div>
         </header>
 
@@ -1185,13 +1229,6 @@
                     <h1 class="section-title">Artikelauswahl</h1>
                     <div class="section-header-controls">
                         <span class="section-sub">+2,00 € Pfand je Getränk</span>
-                        <button
-                            type="button"
-                            id="schlussverkauf-button"
-                            class="schlussverkauf-btn"
-                            aria-pressed="false"
-                            onclick="schalteSchlussverkaufUm()"
-                        >Schlussverkauf starten</button>
                     </div>
                 </div>
 
@@ -1425,11 +1462,6 @@
             <aside class="warenkorb" aria-label="Bon">
                 <div class="warenkorb-kopf">
                     <h2>Aktueller Bon</h2>
-                    <div class="warenkorb-kopf-rechts">
-                        <button type="button" class="bon-journal-btn" onclick="oeffneJournalModal()">
-                            Bericht (<span id="bon-journal-anzahl-badge">0</span>)
-                        </button>
-                    </div>
                 </div>
                 <div id="warenkorb-liste">
                     <p class="leer">Keine Positionen erfasst.</p>
@@ -1583,6 +1615,37 @@
             </div>
         </div>
 
+        <div
+            id="reset-modal"
+            class="modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="reset-modal-titel"
+        >
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 id="reset-modal-titel">Alles zurücksetzen?</h3>
+                    <button type="button" class="modal-close" onclick="schliesseResetModal()" aria-label="Schließen">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="confirm-text">
+                        Die Bon-Historie wird gelöscht, der Schlussverkauf beendet und der aktuelle Bon verworfen.
+                        Dieser Vorgang kann nicht rückgängig gemacht werden.
+                    </p>
+                    <div class="modal-aktionen">
+                        <button type="button" class="modal-abbrechen" onclick="schliesseResetModal()">
+                            Abbrechen
+                        </button>
+                        <button type="button" class="modal-loeschen-bestaetigen" onclick="globalerReset()">
+                            Alles löschen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <!-- LOKALES JOURNAL OVERLAY -->
         <div
             id="journal-modal"
@@ -1621,11 +1684,8 @@
                     <div class="journal-abschnitt-titel">Letzte Buchungen</div>
                     <div class="journal-liste" id="journal-buchungen-liste"></div>
 
-                    <div class="modal-aktionen">
-                        <button type="button" class="modal-abbrechen" onclick="journalLeeren()">
-                            Löschen
-                        </button>
-                        <button type="button" class="modal-abschliessen" onclick="schliesseJournalModal()">
+                    <div class="modal-aktionen journal-aktionen">
+                        <button type="button" class="modal-abbrechen" onclick="schliesseJournalModal()">
                             Schließen
                         </button>
                     </div>
@@ -1691,7 +1751,7 @@
             }
 
             function aktualisiereSchlussverkaufAnzeige() {
-                document.querySelectorAll(".schlussverkauf-btn").forEach((button) => {
+                document.querySelectorAll(".menu-schlussverkauf-btn").forEach((button) => {
                     button.innerText = schlussverkaufAktiv ? "Schlussverkauf beenden" : "Schlussverkauf starten";
                     button.setAttribute("aria-pressed", String(schlussverkaufAktiv));
                 });
@@ -1715,6 +1775,60 @@
                 }
 
                 schlussverkaufAktiv = neuerStatus;
+                aktualisiereSchlussverkaufAnzeige();
+                aktualisiereWarenkorb();
+                schliesseMenue();
+            }
+
+            function schalteMenueUm() {
+                const menu = document.getElementById("topbar-menu");
+                const sollOeffnen = menu.hidden;
+                menu.hidden = !sollOeffnen;
+                const toggle = document.getElementById("menu-toggle");
+                toggle.setAttribute("aria-expanded", String(sollOeffnen));
+                toggle.setAttribute("aria-label", sollOeffnen ? "Menü schließen" : "Menü öffnen");
+
+                if (sollOeffnen) {
+                    menu.querySelector("button").focus();
+                }
+            }
+
+            function schliesseMenue() {
+                const menu = document.getElementById("topbar-menu");
+                menu.hidden = true;
+                const toggle = document.getElementById("menu-toggle");
+                toggle.setAttribute("aria-expanded", "false");
+                toggle.setAttribute("aria-label", "Menü öffnen");
+            }
+
+            function oeffneJournalAusMenue() {
+                schliesseMenue();
+                oeffneJournalModal();
+            }
+
+            function oeffneResetModal() {
+                schliesseMenue();
+                document.getElementById("reset-modal").classList.add("aktiv");
+            }
+
+            function schliesseResetModal() {
+                document.getElementById("reset-modal").classList.remove("aktiv");
+            }
+
+            function globalerReset() {
+                try {
+                    localStorage.removeItem(CONFIG.STORAGE_KEY_JOURNAL);
+                    localStorage.removeItem(CONFIG.STORAGE_KEY_SCHLUSSVERKAUF);
+                } catch (error) {
+                    console.error("Die gespeicherten Kassendaten konnten nicht vollständig zurückgesetzt werden.", error);
+                    window.alert("Der Reset konnte nicht vollständig durchgeführt werden. Bitte erneut versuchen.");
+                    return;
+                }
+
+                bestellungen = {};
+                schlussverkaufAktiv = false;
+                schliesseResetModal();
+                aktualisiereJournalBadge();
                 aktualisiereSchlussverkaufAnzeige();
                 aktualisiereWarenkorb();
             }
@@ -1816,7 +1930,6 @@
                 const warenkorbListe = document.getElementById("warenkorb-liste");
                 const loeschenButtons = document.querySelectorAll(".loeschen");
                 const bezahlenButtons = document.querySelectorAll(".bezahlen");
-                const istMobilAnsicht = window.matchMedia("(max-width: 767px)").matches;
 
                 const hatBestellungen = Object.keys(bestellungen).length > 0;
                 loeschenButtons.forEach((button) => (button.disabled = !hatBestellungen));
@@ -1832,8 +1945,12 @@
                     const minusButton = document.getElementById(`minus-${produktId}`);
                     const badge = document.getElementById(`badge-${produktId}`);
                     const karte = document.getElementById(`card-${produktId}`);
+                    const produktContainer = karte ? karte.closest(".produkt-container") : null;
 
                     if (anzahl > 0) {
+                        if (produktContainer) {
+                            produktContainer.classList.add("mit-loeschbutton");
+                        }
                         const produktGesamt = rundeCent(preisFuerProdukt(produktId) * anzahl);
                         getraenkeGesamt = rundeCent(getraenkeGesamt + produktGesamt);
 
@@ -1863,15 +1980,12 @@
                             karte.classList.add("hat-anzahl");
                         }
                     } else {
+                        if (produktContainer) {
+                            produktContainer.classList.remove("mit-loeschbutton");
+                        }
                         if (minusButton) {
-                            if (istMobilAnsicht) {
-                                minusButton.style.display = "block";
-                                minusButton.innerHTML = muelltonnenIcon();
-                                minusButton.disabled = true;
-                            } else {
-                                minusButton.style.display = "none";
-                                minusButton.disabled = false;
-                            }
+                            minusButton.style.display = "none";
+                            minusButton.disabled = true;
                         }
                         if (badge) {
                             badge.classList.remove("sichtbar");
@@ -2056,12 +2170,8 @@
             function aktualisiereJournalBadge() {
                 const anzahl = ladeJournal().length;
                 const badge = document.getElementById("journal-anzahl-badge");
-                const bonBadge = document.getElementById("bon-journal-anzahl-badge");
                 if (badge) {
                     badge.innerText = anzahl;
-                }
-                if (bonBadge) {
-                    bonBadge.innerText = anzahl;
                 }
             }
 
@@ -2141,11 +2251,6 @@
                 document.getElementById("journal-modal").classList.remove("aktiv");
             }
 
-            function journalLeeren() {
-                speichereJournal([]);
-                oeffneJournalModal();
-            }
-
             function bestellungAbschliessen() {
                 bucheImJournal();
                 bestellungen = {};
@@ -2157,11 +2262,14 @@
                 const bezahlAktiv = document.getElementById("bezahl-modal").classList.contains("aktiv");
                 const loeschenAktiv = document.getElementById("loeschen-modal").classList.contains("aktiv");
                 const journalAktiv = document.getElementById("journal-modal").classList.contains("aktiv");
+                const resetAktiv = document.getElementById("reset-modal").classList.contains("aktiv");
 
                 if (event.key === "Escape") {
                     if (bezahlAktiv) schliesseBezahlModal();
                     if (loeschenAktiv) schliesseLoeschenModal();
                     if (journalAktiv) schliesseJournalModal();
+                    if (resetAktiv) schliesseResetModal();
+                    if (!document.getElementById("topbar-menu").hidden) schliesseMenue();
                     return;
                 }
 
@@ -2171,6 +2279,12 @@
                         event.preventDefault();
                         bestellungAbschliessen();
                     }
+                }
+            });
+
+            document.addEventListener("click", function (event) {
+                if (!event.target.closest(".topbar-actions")) {
+                    schliesseMenue();
                 }
             });
 
