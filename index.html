@@ -1180,6 +1180,51 @@
                     padding: 14px 24px;
                 }
 
+                .menu-toggle {
+                    display: none;
+                }
+
+                .topbar-actions {
+                    flex: 1;
+                    justify-content: flex-end;
+                }
+
+                .topbar-menu,
+                .topbar-menu[hidden] {
+                    position: static;
+                    display: flex;
+                    align-items: center;
+                    gap: 4px;
+                    width: auto;
+                    padding: 0;
+                    background: transparent;
+                    border: 0;
+                    border-radius: 0;
+                    box-shadow: none;
+                }
+
+                .topbar-menu button {
+                    width: auto;
+                    padding: 10px 11px;
+                    color: #ffffff;
+                    font-size: 13px;
+                    white-space: nowrap;
+                }
+
+                .topbar-menu button:hover {
+                    background-color: rgba(255, 255, 255, 0.12);
+                }
+
+                .topbar-menu .menu-schlussverkauf-btn[aria-pressed="true"],
+                .topbar-menu .menu-reset {
+                    color: #fecaca;
+                }
+
+                .topbar-menu .menu-install {
+                    border-bottom: 0;
+                    margin-bottom: 0;
+                }
+
                 .topbar-title {
                     font-size: 18px;
                 }
