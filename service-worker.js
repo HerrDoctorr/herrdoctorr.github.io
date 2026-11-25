@@ -1,10 +1,8 @@
-const CACHE_NAME = "avanti-kassensystem-v1";
+const CACHE_NAME = "avanti-kassensystem-v2";
 const APP_FILES = [
     "./",
     "./index.html",
     "./manifest.webmanifest",
-    "./icon-192.png",
-    "./icon-512.png",
     "./Logo1zu1.png",
     "./gluehwein.png",
     "./gluehwein-schuss.png",
