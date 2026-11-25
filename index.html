@@ -193,6 +193,12 @@
                 color: var(--accent-danger);
             }
 
+            .topbar-menu .menu-install {
+                border-bottom: 1px solid var(--line-subtle);
+                border-radius: 0;
+                margin-bottom: 4px;
+            }
+
             /* LAYOUT */
             .pos-shell {
                 flex: 1 0 auto;
@@ -1212,6 +1218,9 @@
                     </svg>
                 </button>
                 <nav id="topbar-menu" class="topbar-menu" aria-label="Verwaltung" hidden>
+                    <button type="button" id="menu-install-button" class="menu-install" onclick="installiereApp()">
+                        Als App installieren
+                    </button>
                     <button type="button" onclick="oeffneJournalAusMenue()">
                         Kassenbericht (<span id="journal-anzahl-badge">0</span>)
                     </button>
@@ -1699,6 +1708,44 @@
             </div>
         </div>
 
+        <div
+            id="install-modal"
+            class="modal-backdrop"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="install-modal-titel"
+        >
+            <div class="modal-box">
+                <div class="modal-header">
+                    <h3 id="install-modal-titel">Als App installieren</h3>
+                    <button type="button" class="modal-close" onclick="schliesseInstallationshilfe()" aria-label="Schließen">
+                        &times;
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p class="confirm-text">
+                        <strong>Android (Chrome):</strong> Öffne das Chrome-Menü (⋮) und wähle „App installieren“
+                        oder „Zum Startbildschirm hinzufügen“.
+                    </p>
+                    <p class="confirm-text">
+                        <strong>iPhone/iPad (Safari):</strong> Tippe auf „Teilen“ und anschließend auf „Zum
+                        Home-Bildschirm“.
+                    </p>
+                    <p class="confirm-text">
+                        Ist „App installieren“ ausgegraut, kann Chrome die App gerade nicht installieren. Die Website
+                        muss über HTTPS erreichbar sein und zusammen mit dem Manifest, dem Service Worker sowie den
+                        Dateien <code>icon-192.png</code> und <code>icon-512.png</code> veröffentlicht sein. Lade
+                        danach die Seite erneut.
+                    </p>
+                    <div class="modal-aktionen">
+                        <button type="button" class="modal-abbrechen" onclick="schliesseInstallationshilfe()">
+                            Schließen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <footer class="footer">
             <div class="footer-inner">
                 <div class="footer-brand">
@@ -1736,6 +1783,17 @@
             let gegebenerBetrag = 0;
             let letzterKlickZeitpunkt = {};
             let schlussverkaufAktiv = false;
+            let ausstehenderInstallPrompt = null;
+
+            window.addEventListener("beforeinstallprompt", (event) => {
+                event.preventDefault();
+                ausstehenderInstallPrompt = event;
+            });
+
+            window.addEventListener("appinstalled", () => {
+                ausstehenderInstallPrompt = null;
+                document.getElementById("menu-install-button").hidden = true;
+            });
 
             try {
                 schlussverkaufAktiv = localStorage.getItem(CONFIG.STORAGE_KEY_SCHLUSSVERKAUF) === "true";
@@ -1805,6 +1863,28 @@
                 const toggle = document.getElementById("menu-toggle");
                 toggle.setAttribute("aria-expanded", "false");
                 toggle.setAttribute("aria-label", "Menü öffnen");
+            }
+
+            async function installiereApp() {
+                schliesseMenue();
+
+                if (!ausstehenderInstallPrompt) {
+                    document.getElementById("install-modal").classList.add("aktiv");
+                    return;
+                }
+
+                try {
+                    const installPrompt = ausstehenderInstallPrompt;
+                    ausstehenderInstallPrompt = null;
+                    await installPrompt.prompt();
+                } catch (error) {
+                    console.error("Die App-Installation konnte nicht gestartet werden.", error);
+                    document.getElementById("install-modal").classList.add("aktiv");
+                }
+            }
+
+            function schliesseInstallationshilfe() {
+                document.getElementById("install-modal").classList.remove("aktiv");
             }
 
             function oeffneJournalAusMenue() {
@@ -2269,12 +2349,14 @@
                 const loeschenAktiv = document.getElementById("loeschen-modal").classList.contains("aktiv");
                 const journalAktiv = document.getElementById("journal-modal").classList.contains("aktiv");
                 const resetAktiv = document.getElementById("reset-modal").classList.contains("aktiv");
+                const installAktiv = document.getElementById("install-modal").classList.contains("aktiv");
 
                 if (event.key === "Escape") {
                     if (bezahlAktiv) schliesseBezahlModal();
                     if (loeschenAktiv) schliesseLoeschenModal();
                     if (journalAktiv) schliesseJournalModal();
                     if (resetAktiv) schliesseResetModal();
+                    if (installAktiv) schliesseInstallationshilfe();
                     if (!document.getElementById("topbar-menu").hidden) schliesseMenue();
                     return;
                 }
@@ -2297,6 +2379,9 @@
             aktualisiereJournalBadge();
             aktualisiereSchlussverkaufAnzeige();
             aktualisiereWarenkorb();
+            if (window.matchMedia("(display-mode: standalone)").matches) {
+                document.getElementById("menu-install-button").hidden = true;
+            }
             const mobileMediaQuery = window.matchMedia("(max-width: 767px)");
             if (mobileMediaQuery.addEventListener) {
                 mobileMediaQuery.addEventListener("change", aktualisiereWarenkorb);
